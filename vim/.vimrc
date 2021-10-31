@@ -57,7 +57,7 @@ if has("gui_running")
 	endif
 endif
 
-"set background=light
-"colorscheme morning
-set background=dark
-colorscheme slate
+set background=light
+colorscheme morning
+"set background=dark
+"colorscheme slate
