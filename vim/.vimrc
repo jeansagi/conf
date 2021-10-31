@@ -15,6 +15,15 @@ silent! while 0
   set nocompatible
 silent! endwhile
 
+set nu				" Habilita números de línea
+set nowrap			" Las líneas largas no se hacen visibles
+set ts=4			" TabStop en 4
+
+syn on				" Habilitar resaltado de acuerdo a la syntaxis
+
+set hlsearch		" El resultado de las búsquedas se resalta
+
+
 " TODO: Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
 
 " --- --- ---
@@ -26,19 +35,11 @@ set noeb
 set vb
 set t_vb=
 
-set nowrap
-set nu
-
-set hlsearch
-
 "set guifont=Consolas:h12:cANSI
 "set guifont=Cascadia_Code_PL_ExtraLight:h12:W200:cANSI:qDRAFT
 set guifont=Cascadia_Code_PL_ExtraLight:h14:W200:cANSI:qDRAFT
 
 nmap <silent> <leader>gf :set guifont=*<CR>
-
-syn on
-set ts=4
 
 "enable ligatures
 set encoding=utf-8
