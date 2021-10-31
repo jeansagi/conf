@@ -1,3 +1,25 @@
+"
+" vimrc -- Debería funcionar para Windows/Linux con/sin GUI
+"
+
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+" Avoid side effects when it was already reset.
+if &compatible
+  set nocompatible
+endif
+
+" When the +eval feature is missing, the set command above will be skipped.
+" Use a trick to reset compatible only when the +eval feature is missing.
+silent! while 0
+  set nocompatible
+silent! endwhile
+
+" TODO: Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
+
+" --- --- ---
+
+"
 " Temporal
 "
 set noeb
