@@ -83,3 +83,33 @@ endif
 "colorscheme morning
 set background=dark
 colorscheme slate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" En sayo de la opción guioptions !
+" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries.
+if has('win32')
+  set guioptions+=a		" Lo que se seleccione con el mouse queda copiado
+
+  set guioptions-=m		" Sin barra de menues		!
+  set guioptions-=t		" Sin tijeras en los menús	!!
+  set guioptions-=T		" Sin barra de herramientas	!
+  set guioptions-=r		" Sin barra de scroll a la izquierda !
+  set guioptions-=l		" Sin barra de scroll a la derecha !
+  set guioptions-=b		" Sin barra de scroll horizontal !
+endif
+
+" TODO: Buscar como estaban los giuoptions en otros vimrc's que haya manejado...
+
+
