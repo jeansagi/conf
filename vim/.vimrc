@@ -40,6 +40,43 @@ let mapleader=","				" Maps default leader '\' to ','
 let maplocaleader="\\"			" Set local leader to Backslash
 
 
+
+
+
+
+
+
+" guioptions options
+if has('win32')
+	" Default :				No GUI controls			!
+	set guioptions+=a		" Selected text gets copied !
+
+	set guioptions-=m		" No MenuBar			!
+	set guioptions-=t		" No scissors on menus	!
+	set guioptions-=T		" No ToolBar			!
+	set guioptions-=r		" No Right ScrollBar	!
+	set guioptions-=b		" No Bottom ScrollBar	!
+	set guioptions-=l		" No Left ScrollBar		!
+
+	" Offer mappings to enable/disable gui controls
+	"	Ctrl-F1	:	(m)	Enable/Disable MenuBar
+	"	Ctrl-F2	:	(T)	Enable/Disable ToolBar
+	"	Ctrl-F3	:	(r)	Enable/Disable Right ScrollBar
+	"	Ctrl-F4	:	(b)	Enable/Disable Bottom ScrollBar
+	"	Ctrl-F5	:	(l)	Enable/Disable Left ScrollBar
+	nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+	nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
+	nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+	nnoremap <C-F4> :if &go=~#'b'<Bar>set go-=b<Bar>else<Bar>set go+=b<Bar>endif<CR>
+	nnoremap <C-F5> :if &go=~#'l'<Bar>set go-=l<Bar>else<Bar>set go+=l<Bar>endif<CR>
+endif
+
+
+
+
+
+
+
 " TODO: Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
 
 " --- --- ---
@@ -105,37 +142,4 @@ colorscheme slate
 
 
 
-
-
-
-
-
-
-
-
-
-" Ensayo de la opción guioptions !
-if has('win32')
-	" Default :				No GUI controls			!
-	set guioptions+=a		" Selected text gets copied !
-
-	set guioptions-=m		" No MenuBar			!
-	set guioptions-=t		" No scissors on menus	!
-	set guioptions-=T		" No ToolBar			!
-	set guioptions-=r		" No Right ScrollBar	!
-	set guioptions-=b		" No Bottom ScrollBar	!
-	set guioptions-=l		" No Left ScrollBar		!
-
-	" Offer mappings to enable/disable gui controls
-	"	Ctrl-F1	:	(m)	Enable/Disable MenuBar
-	"	Ctrl-F2	:	(T)	Enable/Disable ToolBar
-	"	Ctrl-F3	:	(r)	Enable/Disable Right ScrollBar
-	"	Ctrl-F4	:	(b)	Enable/Disable Bottom ScrollBar
-	"	Ctrl-F5	:	(l)	Enable/Disable Left ScrollBar
-	nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
-	nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
-	nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
-	nnoremap <C-F4> :if &go=~#'b'<Bar>set go-=b<Bar>else<Bar>set go+=b<Bar>endif<CR>
-	nnoremap <C-F5> :if &go=~#'l'<Bar>set go-=l<Bar>else<Bar>set go+=l<Bar>endif<CR>
-endif
-
+Atòn Kayé
