@@ -6,13 +6,13 @@
 " This must be first, because it changes other options as a side effect.
 " Avoid side effects when it was already reset.
 if &compatible
-  set nocompatible
+	set nocompatible
 endif
 
 " When the +eval feature is missing, the set command above will be skipped.
 " Use a trick to reset compatible only when the +eval feature is missing.
 silent! while 0
-  set nocompatible
+	set nocompatible
 silent! endwhile
 
 set number						" Enable line numbering (nu)
@@ -100,3 +100,42 @@ endif
 "colorscheme morning
 set background=dark
 colorscheme slate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" Ensayo de la opción guioptions !
+if has('win32')
+	" Default :				No GUI controls			!
+	set guioptions+=a		" Selected text gets copied !
+
+	set guioptions-=m		" No MenuBar			!
+	set guioptions-=t		" No scissors on menus	!
+	set guioptions-=T		" No ToolBar			!
+	set guioptions-=r		" No Right ScrollBar	!
+	set guioptions-=b		" No Bottom ScrollBar	!
+	set guioptions-=l		" No Left ScrollBar		!
+
+	" Offer mappings to enable/disable gui controls
+	"	Ctrl-F1	:	(m)	Enable/Disable MenuBar
+	"	Ctrl-F2	:	(T)	Enable/Disable ToolBar
+	"	Ctrl-F3	:	(r)	Enable/Disable Right ScrollBar
+	"	Ctrl-F4	:	(b)	Enable/Disable Bottom ScrollBar
+	"	Ctrl-F5	:	(l)	Enable/Disable Left ScrollBar
+	nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+	nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
+	nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+	nnoremap <C-F4> :if &go=~#'b'<Bar>set go-=b<Bar>else<Bar>set go+=b<Bar>endif<CR>
+	nnoremap <C-F5> :if &go=~#'l'<Bar>set go-=l<Bar>else<Bar>set go+=l<Bar>endif<CR>
+endif
+
