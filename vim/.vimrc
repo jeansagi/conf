@@ -15,15 +15,16 @@ silent! while 0
   set nocompatible
 silent! endwhile
 
-set nu				" Habilita números de línea
-set nowrap			" Las líneas largas no se hacen visibles
-set ts=4			" TabStop en 4
+set nu					" Habilita números de línea
+set nowrap				" Las líneas largas no se hacen visibles
+set ts=4				" TabStop en 4
 
-syn on				" Habilitar resaltado de acuerdo a la syntaxis
+syn on					" Habilitar resaltado de acuerdo a la syntaxis
 
-set hlsearch		" El resultado de las búsquedas se resalta
+set hlsearch			" El resultado de las búsquedas se resalta
 
-let mapleader=","	" Maps default leader "\" to ","
+let mapleader=","		" Maps default leader '\' to ','
+let maplocaleader="\\"	" Set local leader to Backslash
 
 
 " TODO: Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
