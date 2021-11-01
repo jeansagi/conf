@@ -46,6 +46,7 @@ let maplocaleader="\\"			" Set local leader to Backslash
 
 
 
+
 " guioptions options
 if has('win32')
 	" Default :				No GUI controls			!
@@ -71,10 +72,11 @@ if has('win32')
 	nnoremap <C-F5> :if &go=~#'l'<Bar>set go-=l<Bar>else<Bar>set go+=l<Bar>endif<CR>
 endif
 
-
-
-
-
+" Enable Listing or not invisible characters in different modes
+nnoremap <F4> :set list! list?<CR>
+inoremap <F4> <C-o>:set list!<CR>
+cnoremap <F4> <C-c>:set list!<CR>
+vnoremap <F4> :set list!<CR>
 
 
 " TODO: Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
@@ -142,4 +144,4 @@ colorscheme slate
 
 
 
-Atòn Kayé
+"	Atòn Kayé
