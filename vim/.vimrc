@@ -15,16 +15,29 @@ silent! while 0
   set nocompatible
 silent! endwhile
 
-set nu					" Habilita números de línea
-set nowrap				" Las líneas largas no se hacen visibles
-set ts=4				" TabStop en 4
+set number						" Enable line numbering (nu)
+set nolist						" Disable showing invisible characters
+set nowrap						" Long lines don't go to next line
+set tabstop=4					" Tabs equals 4 spaces (ts)
+set softtabstop=4				" when hitting <BS>, pretend like a tab is removed, even if spaces
+set shiftwidth=4				" number of spaces to use for autoindenting
+set shiftround					" use multiple of shiftwidth when indenting with '<' and '>'
+set backspace=indent,eol,start	" allow backspacing over everything in insert mode
+set autoindent					" always set autoindenting on
+set copyindent					" copy the previous indentation on autoindenting
 
-syn on					" Habilitar resaltado de acuerdo a la syntaxis
+set hlsearch					" Enable search highlighting
+set incsearch					" Enable incremental searching while typing
+set showmatch					" Enable showing matching parenthesis
+set	ignorecase					" Enable case insensitive search
+set smartcase					" Enable ignoring case if all lowercase pattern used, don't otherwise
 
-set hlsearch			" El resultado de las búsquedas se resalta
+set showmode					" Show editing mode
 
-let mapleader=","		" Maps default leader '\' to ','
-let maplocaleader="\\"	" Set local leader to Backslash
+syntax on						" Enable Color Syntax Highlighting (syn)
+
+let mapleader=","				" Maps default leader '\' to ','
+let maplocaleader="\\"			" Set local leader to Backslash
 
 
 " TODO: Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
