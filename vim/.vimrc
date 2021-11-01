@@ -23,6 +23,8 @@ syn on				" Habilitar resaltado de acuerdo a la syntaxis
 
 set hlsearch		" El resultado de las búsquedas se resalta
 
+let mapleader=","	" Maps default leader "\" to ","
+
 
 " TODO: Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
 
