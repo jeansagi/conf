@@ -2,18 +2,85 @@
 " vimrc -- Debería funcionar para Windows/Linux con/sin GUI
 "
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-" Avoid side effects when it was already reset.
-if &compatible
-	set nocompatible
+"
+" Los siguientes 2 bloques se comentan ya que esto está incluido en defaults.vim
+"
+" <<< INICIO
+"
+" " Use Vim settings, rather than Vi settings (much better!).
+" " This must be first, because it changes other options as a side effect.
+" " Avoid side effects when it was already reset.
+" if &compatible
+	" set nocompatible
+" endif
+" 
+" " When the +eval feature is missing, the set command above will be skipped.
+" " Use a trick to reset compatible only when the +eval feature is missing.
+" silent! while 0
+	" set nocompatible
+" silent! endwhile
+"
+" FIN >>>
+"
+
+" Cuando vim se inicia como evim, evim.vim, con seguridad ya ha hecho su trabajo.
+if v:progname =~? "evim"
+  finish
 endif
 
-" When the +eval feature is missing, the set command above will be skipped.
-" Use a trick to reset compatible only when the +eval feature is missing.
-silent! while 0
-	set nocompatible
-silent! endwhile
+" TODO: Analizar lo que hace defaults.vim para ver que opciones no aplican !
+" Establecer las características por defecto que la myoría de usuarios desean.
+source $VIMRUNTIME/defaults.vim
+
+if has("vms")
+  set nobackup		" vms no implementa backups. Hay que usar versiones
+else
+  set backup		" Permitir backup (permite retaurar una versión anterior)
+  if has('persistent_undo')
+    set undofile	" Permitir un archivo para deshacer (incluso después de cerrar)
+  endif
+endif
+
+if &t_Co > 2 || has("gui_running")
+  " Habilitar resaltado del último patrón de busqueda
+  set hlsearch
+endif
+
+"
+" No veo como esto sea una opción que le guste a todos los usuarios de VIM !!
+"
+" " Put these in an autocmd group, so that we can delete them easily.
+" " Poner esto en un grupo de automcmd, de forma que se pueda borrar facilmente
+" augroup vimrcEx
+"   au!
+" 
+"   " Para todos los archivos de texto establecer 'textwidth' a 78 caracteres
+"   autocmd FileType text setlocal textwidth=80
+" augroup END
+"
+"
+"
+
+" Añadir paquetes opcionales.
+"
+" El plugin matchit hace que el comando % funcione mejor, pero no es compatible
+" hacia atrás.
+" El signo ! significa que el paquete no será cargado de inmediato sino cuando
+" se carguen los plugins durante la inicialización.
+if has('syntax') && has('eval')
+  packadd! matchit
+endif
+
+"
+" TODO:	Agregar el comportamiento de mswin.vim
+"		Creo que se puede ver en el _vimrc de 'Crystal'
+"
+
+
+
+
+
+
 
 set number						" Enable line numbering (nu)
 set nolist						" Disable showing invisible characters
@@ -29,7 +96,7 @@ set copyindent					" copy the previous indentation on autoindenting
 set hlsearch					" Enable search highlighting
 set incsearch					" Enable incremental searching while typing
 set showmatch					" Enable showing matching parenthesis
-set	ignorecase					" Enable case insensitive search
+set ignorecase					" Enable case insensitive search
 set smartcase					" Enable ignoring case if all lowercase pattern used, don't otherwise
 
 set showmode					" Show editing mode
@@ -79,7 +146,9 @@ cnoremap <F4> <C-c>:set list!<CR>
 vnoremap <F4> :set list!<CR>
 
 
-" TODO: Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
+" TODO:	* Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
+"		- Cuando ya se termine .vimrc (o al menos cuando esté adelantado), trabajar en .gvimrc...
+" 
 
 " --- --- ---
 
