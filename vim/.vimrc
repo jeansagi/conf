@@ -2,26 +2,9 @@
 " vimrc -- Debería funcionar para Windows/Linux con/sin GUI
 "
 
-"
-" Los siguientes 2 bloques se comentan ya que esto está incluido en defaults.vim
-"
-" <<< INICIO
-"
-" " Use Vim settings, rather than Vi settings (much better!).
-" " This must be first, because it changes other options as a side effect.
-" " Avoid side effects when it was already reset.
-" if &compatible
-	" set nocompatible
-" endif
-" 
-" " When the +eval feature is missing, the set command above will be skipped.
-" " Use a trick to reset compatible only when the +eval feature is missing.
-" silent! while 0
-	" set nocompatible
-" silent! endwhile
-"
-" FIN >>>
-"
+" TODO:	Agregar a .gitignore los archivos de backup de Vim:
+"		Los archivos que terminan en ~
+"		O sea que el patrón sería: ".*~" sin las comillas dobles!
 
 " Cuando vim se inicia como evim, evim.vim, con seguridad ya ha hecho su trabajo.
 if v:progname =~? "evim"
@@ -29,8 +12,13 @@ if v:progname =~? "evim"
 endif
 
 " TODO: Analizar lo que hace defaults.vim para ver que opciones no aplican !
-" Establecer las características por defecto que la myoría de usuarios desean.
+" Establecer las características por defecto que la mayoría de usuarios desean.
 source $VIMRUNTIME/defaults.vim
+
+" TODO: Analizar lo que hace mswin.vim para ver que opciones no aplican !
+set nocompatible                    
+source $VIMRUNTIME/mswin.vim        
+behave mswin                        
 
 if has("vms")
   set nobackup		" vms no implementa backups. Hay que usar versiones
@@ -70,11 +58,6 @@ endif
 if has('syntax') && has('eval')
   packadd! matchit
 endif
-
-"
-" TODO:	Agregar el comportamiento de mswin.vim
-"		Creo que se puede ver en el _vimrc de 'Crystal'
-"
 
 
 
