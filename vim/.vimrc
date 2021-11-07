@@ -2,10 +2,6 @@
 " vimrc -- Debería funcionar para Windows/Linux con/sin GUI
 "
 
-" TODO:	Agregar a .gitignore los archivos de backup de Vim:
-"		Los archivos que terminan en ~
-"		O sea que el patrón sería: ".*~" sin las comillas dobles!
-
 " Cuando vim se inicia como evim, evim.vim, con seguridad ya ha hecho su trabajo.
 if v:progname =~? "evim"
   finish
@@ -16,9 +12,8 @@ endif
 source $VIMRUNTIME/defaults.vim
 
 " TODO: Analizar lo que hace mswin.vim para ver que opciones no aplican !
-set nocompatible                    
-source $VIMRUNTIME/mswin.vim        
-behave mswin                        
+source $VIMRUNTIME/mswin.vim
+behave mswin
 
 if has("vms")
   set nobackup		" vms no implementa backups. Hay que usar versiones
@@ -65,6 +60,8 @@ endif
 
 
 
+
+
 set number						" Enable line numbering (nu)
 set nolist						" Disable showing invisible characters
 set nowrap						" Long lines don't go to next line
@@ -88,8 +85,6 @@ syntax on						" Enable Color Syntax Highlighting (syn)
 
 let mapleader=","				" Maps default leader '\' to ','
 let maplocaleader="\\"			" Set local leader to Backslash
-
-
 
 
 
@@ -122,7 +117,19 @@ if has('win32')
 	nnoremap <C-F5> :if &go=~#'l'<Bar>set go-=l<Bar>else<Bar>set go+=l<Bar>endif<CR>
 endif
 
-" Enable Listing or not invisible characters in different modes
+" Habilitar listchars para que los invisibles se vean bien cuando se revelen.
+set listchars=eol:¶,tab:└─▷,nbsp:▧,trail:∘,precedes:◀,extends:▶
+if has('patch-7.4.710')
+	set listchars+=lead:∘
+	set listchars+=space:∙			" No que no mi Bram !!
+endif
+" Caracter para mostrar cuando se habilita el wrapping
+let &showbreak = '↳'
+" Caracter para las diviciones horizontales...
+set fillchars-=vert:\|		" Quitamos el pipe so lo hubiese
+set fillchars+=vert:\│		" y Agregamos un unicode mejor!
+
+" Enable Listing or not invisible characters in different   modes   
 nnoremap <F4> :set list! list?<CR>
 inoremap <F4> <C-o>:set list!<CR>
 cnoremap <F4> <C-c>:set list!<CR>
