@@ -135,6 +135,10 @@ inoremap <F4> <C-o>:set list!<CR>
 cnoremap <F4> <C-c>:set list!<CR>
 vnoremap <F4> :set list!<CR>
 
+" Permitir que el mouse se pueda utilizar en la terminal
+" TODO: Esto como que no funciona muy bien en la terminal... Investigar
+set mouse=a
+
 
 " TODO:	* Seguir revisando c:\\Program\ Files\\Git\\usr\\share\\vim\\vim82\\defaults.vim
 "		- Cuando ya se termine .vimrc (o al menos cuando esté adelantado), trabajar en .gvimrc...
@@ -157,7 +161,9 @@ nmap <silent> <leader>gf :set guifont=*<CR>
 
 "enable ligatures
 set encoding=utf-8
-set renderoptions=type:directx,geom:1,renmode:5,taamode:1
+"set renderoptions=type:directx,geom:1,renmode:5,taamode:1
+"set renderoptions=type:directx,gamma:1.0,constrast:0.5,level:1,geom:1,renmode:4,taamode:1
+set renderoptions=type:directx,gamma:1.0,level:1,geom:1,renmode:4,taamode:1
 
 "
 "----------------------------------------------------
@@ -196,8 +202,51 @@ endif
 
 "set background=light
 "colorscheme morning
+"set background=dark
+"colorscheme slate
+
+
+
+
+
+
+
+
+" Plugins
+call plug#begin( '~/vimfiles/plugged' )
+
+Plug 'morhetz/gruvbox'					" GruvBox color theme
+Plug 'vim-airline/vim-airline'			" Línea de estado mejorada
+Plug 'vim-airline/vim-airline-themes'	" Línea de estado mejorada
+
+call plug#end()
+
+set background=light
 set background=dark
-colorscheme slate
+
+let g:gruvbox_transparent_bg=1			" Con fondo transparente?
+let g:gruvbox_contrast_light='soft'		" Mejor contraste para ligth
+let g:gruvbox_contrast_hard='hard'		" Mejor contraste para hard
+let g:gruvbox_number_column='bg0'		" Color de la línea actual
+
+colorscheme gruvbox
+
+set noshowmode							" No mostrar el mode de vim
+set laststatus=2						" Mostrar siempre la línea de estado
+let g:airline_powerline_fonts=1			" Mostrar símbolos cool !
+let g:airline_experimental=1			" Usar Vim9 language !
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_statusline_ontop=0
+let g:airline_skip_empty_sections=1
+let g:airline_theme='gruvbox'
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
+let g:airline_solarized_dark_inactive_background=1 
+let g:airline_solarized_dark_inactive_border=1
+"let airline_solarized_enable_command_color=1
+
+"set statusline=						" TODO: Definir un statusline... pero esto como influye con vim-airline????
+set relativenumber
 
 
 
