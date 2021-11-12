@@ -63,6 +63,7 @@ endif
 
 
 set number						" Enable line numbering (nu)
+set cursorline					" Resalta la línea actual
 set nolist						" Disable showing invisible characters
 set nowrap						" Long lines don't go to next line
 set tabstop=4					" Tabs equals 4 spaces (ts)
@@ -155,7 +156,10 @@ set t_vb=
 
 "set guifont=Consolas:h12:cANSI
 "set guifont=Cascadia_Code_PL_ExtraLight:h12:W200:cANSI:qDRAFT
-set guifont=Cascadia_Code_PL_ExtraLight:h14:W200:cANSI:qDRAFT
+"set guifont=Cascadia_Code_PL_ExtraLight:h14:W100:cANSI:qDRAFT
+set guifont=Cascadia_Code_PL:h14:cANSI:qDRAFT
+"set guifont=CaskaydiaCove_NF:h14:cANSI:qDRAFT
+"set guifont=FiraCode_NF:h14:W200:cANSI:qDRAFT
 
 nmap <silent> <leader>gf :set guifont=*<CR>
 
@@ -215,26 +219,31 @@ endif
 " Plugins
 call plug#begin( '~/vimfiles/plugged' )
 
-Plug 'morhetz/gruvbox'					" GruvBox color theme
-Plug 'vim-airline/vim-airline'			" Línea de estado mejorada
-Plug 'vim-airline/vim-airline-themes'	" Línea de estado mejorada
+	" Temas
+	Plug 'morhetz/gruvbox'					" GruvBox color theme
+	Plug 'arcticicestudio/nord-vim'			" Nord color therme
+
+	" Plugins 
+	Plug 'vim-airline/vim-airline'			" Línea de estado mejorada
+	Plug 'vim-airline/vim-airline-themes'	" Línea de estado mejorada
 
 call plug#end()
 
-set background=light
 set background=dark
+set background=light
 
-let g:gruvbox_transparent_bg=1			" Con fondo transparente?
-let g:gruvbox_contrast_light='soft'		" Mejor contraste para ligth
-let g:gruvbox_contrast_hard='hard'		" Mejor contraste para hard
-let g:gruvbox_number_column='bg0'		" Color de la línea actual
+let g:gruvbox_transparent_bg=1				" Con fondo transparente?
+let g:gruvbox_contrast_light='soft'			" Mejor contraste para ligth
+let g:gruvbox_contrast_hard='hard'			" Mejor contraste para hard
+let g:gruvbox_number_column='bg0'			" Color de la línea actual
 
 colorscheme gruvbox
+"colorscheme nord
 
-set noshowmode							" No mostrar el mode de vim
-set laststatus=2						" Mostrar siempre la línea de estado
-let g:airline_powerline_fonts=1			" Mostrar símbolos cool !
-let g:airline_experimental=1			" Usar Vim9 language !
+set noshowmode								" No mostrar el mode de vim
+set laststatus=2							" Mostrar siempre la línea de estado
+let g:airline_powerline_fonts=1				" Mostrar símbolos cool !
+let g:airline_experimental=1				" Usar Vim9 language !
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_statusline_ontop=0
 let g:airline_skip_empty_sections=1
@@ -247,6 +256,7 @@ let g:airline_solarized_dark_inactive_border=1
 
 "set statusline=						" TODO: Definir un statusline... pero esto como influye con vim-airline????
 set relativenumber
+
 
 
 
