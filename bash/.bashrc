@@ -23,6 +23,7 @@ alias cls=clear
 alias ll='ls -la --color=always --show-control-chars --block-size="'\''"1'
 alias open=explorer
 alias tree=tree.bat
+alias vim=vim.bat
 alias gvim=gvim.bat
 #
 alias bye=bye.bat
