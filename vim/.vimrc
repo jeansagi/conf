@@ -127,7 +127,7 @@ endif
 " Caracter para mostrar cuando se habilita el wrapping
 let &showbreak = '↳'
 " Caracter para las diviciones horizontales...
-set fillchars-=vert:\|		" Quitamos el pipe so lo hubiese
+set fillchars-=vert:\|		" Quitamos el pipe si lo hubiese
 set fillchars+=vert:\│		" y Agregamos un unicode mejor!
 
 " Enable Listing or not invisible characters in different   modes   
@@ -155,9 +155,13 @@ set vb
 set t_vb=
 
 "set guifont=Consolas:h12:cANSI
+
 "set guifont=Cascadia_Code_PL_ExtraLight:h12:W200:cANSI:qDRAFT
 "set guifont=Cascadia_Code_PL_ExtraLight:h14:W100:cANSI:qDRAFT
+"set guifont=Cascadia_Code_PL_SemiLight:h12:W350:cANSI:qDRAFT
+"set guifont=Cascadia_Code_PL:h12:cANSI:qDRAFT
 set guifont=Cascadia_Code_PL:h14:cANSI:qDRAFT
+
 "set guifont=CaskaydiaCove_NF:h14:cANSI:qDRAFT
 "set guifont=FiraCode_NF:h14:W200:cANSI:qDRAFT
 
@@ -224,8 +228,17 @@ call plug#begin( '~/vimfiles/plugged' )
 	Plug 'arcticicestudio/nord-vim'			" Nord color therme
 
 	" Plugins 
+	Plug 'tpope/vim-repeat'					" Repetir inteligente
+	Plug 'tpope/speeddating'				" Aumentar/Disminuir fechas
+	Plug 'tpope/vim-surround'				" Acciones alrrededor
 	Plug 'vim-airline/vim-airline'			" Línea de estado mejorada
 	Plug 'vim-airline/vim-airline-themes'	" Línea de estado mejorada
+	Plug 'junegunn/goyo.vim'				" Distraction free Vim
+	Plug 'junegunn/limelight.vim'			" Focus on current
+	Plug 'mechatroner/rainbow_csv'			" Usar archivos tipo CSV
+
+	" Otros
+	Plug 'sts10/vim-closed-captioning'		" Manipulación de .srt's
 
 call plug#end()
 
@@ -242,6 +255,8 @@ colorscheme gruvbox
 
 set noshowmode								" No mostrar el mode de vim
 set laststatus=2							" Mostrar siempre la línea de estado
+
+"	Airline - Configuración
 let g:airline_powerline_fonts=1				" Mostrar símbolos cool !
 let g:airline_experimental=1				" Usar Vim9 language !
 let g:airline#extensions#tabline#enabled = 1
@@ -253,6 +268,17 @@ let g:airline_solarized_bg='dark'
 let g:airline_solarized_dark_inactive_background=1 
 let g:airline_solarized_dark_inactive_border=1
 "let airline_solarized_enable_command_color=1
+
+"	Goyo + Limelight - Configuración
+let g:goyo_width = 72
+let g:limelight_default_coefficient=0.8
+"let g:limelight_paragraph_span = 1
+
+map <leader>gy :Goyo<CR>
+map <leader>ll :Limelight!!<CR>
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
 
 "set statusline=						" TODO: Definir un statusline... pero esto como influye con vim-airline????
 set relativenumber

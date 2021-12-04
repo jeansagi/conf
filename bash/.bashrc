@@ -25,6 +25,7 @@ alias open=explorer
 alias tree=tree.bat
 alias vim=vim.bat
 alias gvim=gvim.bat
+alias uvim=uvim.bat
 #
 alias bye=bye.bat
 alias rinit=rinit.bat
