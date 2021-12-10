@@ -177,3 +177,21 @@ test_24bit_colors() {
 	scrcpy.bat
 }
 
+2ac3() {
+	if [[ -z "$@" ]]; then
+		echo Error: Nothing to convert to ac3
+		return 1
+	fi
+	local	in=${1}	\
+			in_name	\
+			in_ext	\
+			out
+
+	in_name=${in%.*}
+	in_ext=${in##*.}
+	out=${in_name}_ac3.${in_ext}
+
+	bench ffmpeg -y -loglevel panic -hwaccel cuda -hwaccel_output_format cuda -threads 3 -i ${in} -map 0 -vcodec copy -scodec copy -acodec ac3 -b:a 640k ${out}
+
+	return 0
+}
