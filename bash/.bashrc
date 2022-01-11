@@ -36,6 +36,8 @@ alias bloquear=Bloquear.bat
 alias reiniciar=Reiniciar.bat
 alias suspender=Suspender.bat
 alias co=co.bat
+alias tping=tping.bat
+
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
 alias mp=multipass
@@ -191,7 +193,7 @@ test_24bit_colors() {
 	in_ext=${in##*.}
 	out=${in_name}_ac3.${in_ext}
 
-	bench ffmpeg -y -loglevel panic -hwaccel cuda -hwaccel_output_format cuda -threads 3 -i ${in} -map 0 -vcodec copy -scodec copy -acodec ac3 -b:a 640k ${out}
+	ffmpeg -y -loglevel panic -hwaccel cuda -hwaccel_output_format cuda -threads 3 -i ${in} -map 0 -vcodec copy -scodec copy -acodec ac3 -b:a 640k ${out}
 
 	return 0
 }
