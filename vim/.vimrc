@@ -281,7 +281,7 @@ autocmd! User GoyoLeave Limelight!
 
 
 "set statusline=						" TODO: Definir un statusline... pero esto como influye con vim-airline????
-set relativenumber
+set norelativenumber
 
 
 
