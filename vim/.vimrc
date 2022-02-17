@@ -2,6 +2,11 @@
 " vimrc -- Debería funcionar para Windows/Linux con/sin GUI
 "
 
+"
+" VER: http://www.sromero.org/wiki/linux/aplicaciones/manual_vim
+"	   https://www.marblestation.com/?p=910
+"
+
 " Cuando vim se inicia como evim, evim.vim, con seguridad ya ha hecho su trabajo.
 if v:progname =~? "evim"
   finish
@@ -16,12 +21,39 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 
 if has("vms")
-  set nobackup		" vms no implementa backups. Hay que usar versiones
+	set nobackup		" vms no implementa backups. Hay que usar versiones
 else
-  set backup		" Permitir backup (permite retaurar una versión anterior)
-  if has('persistent_undo')
-    set undofile	" Permitir un archivo para deshacer (incluso después de cerrar)
-  endif
+	" Para lo que sigue es necesario crear un 
+	" directorio .vim en $HOME si no existe
+	if !isdirectory($HOME."/.vim")
+		call mkdir($HOME."/.vim", "", 0770)
+	endif
+
+	" Undo Persistente (incluso después de cerrar el archivo editado)
+	if has('persistent_undo')
+		" Crear un directorio para archivos undo si no existiere
+		if !isdirectory($HOME."/.vim/undo-dir")
+			call mkdir($HOME."/.vim/undo-dir", "", 0700)
+		endif
+		" Permitir un archivo para deshacer (incluso después de cerrar)
+		set undodir=~/.vim/undo-dir//,.
+		set undofile
+	endif
+
+	" Archivos de Backup (permite retaurar una versión anterior)
+	" Crear un directorio para archivos de backup si no existiere
+	if !isdirectory($HOME."/.vim/backup-dir")
+		call mkdir($HOME."/.vim/backup-dir", "", 0700)
+	endif
+	set backupdir=~/.vim/backup-dir//,.
+	set backup
+
+	" Archivos de Swap
+	" Crear un directorio para archivos de swap si no existiere
+	if !isdirectory($HOME."/.vim/swap-dir")
+		call mkdir($HOME."/.vim/swap-dir", "", 0700)
+	endif
+	set directory=~/.vim/swap-dir//,.
 endif
 
 if &t_Co > 2 || has("gui_running")
@@ -62,7 +94,8 @@ endif
 
 
 
-set number						" Enable line numbering (nu)
+set number						" habilitar números de línea (nu)
+set norelativenumber			" Order de numeración natural!
 set cursorline					" Resalta la línea actual
 set nolist						" Disable showing invisible characters
 set nowrap						" Long lines don't go to next line
@@ -82,12 +115,33 @@ set smartcase					" Enable ignoring case if all lowercase pattern used, don't ot
 
 set showmode					" Show editing mode
 
-syntax on						" Enable Color Syntax Highlighting (syn)
+set splitbelow					" Splits horizontales hacia abajo
+set splitright					" Splits verticales hacia la derecha
+" Cambio entre Splits:
+"	Alt-← : Ir al split de la izquierda
+"	Alt-↓ : Ir al split de la abajo
+"	Alt-↑ : Ir al split de la arriba
+"	Alt-→ : Ir al split de la derecha
+if has("gui_running")
+	" Command mode
+	nnoremap <silent> <A-Left> :wincmd h<CR>
+	nnoremap <silent> <A-Down> :wincmd j<CR>
+	nnoremap <silent> <A-Up> :wincmd k<CR>	
+	nnoremap <silent> <A-Right> :wincmd l<CR>
+
+	" Insert mode
+	inoremap <silent> <A-Left> <C-o>:wincmd h<CR>
+	inoremap <silent> <A-Down> <C-o>:wincmd j<CR>
+	inoremap <silent> <A-Up> <C-o>:wincmd k<CR>
+	inoremap <silent> <A-Right> <C-o>:wincmd l<CR>
+endif
 
 let mapleader=","				" Maps default leader '\' to ','
 let maplocaleader="\\"			" Set local leader to Backslash
 
+nnoremap <silent> <leader>. :noh<CR>	" Des-ilumina la última búsqueda
 
+syntax on						" Enable Color Syntax Highlighting (syn)
 
 
 
@@ -148,7 +202,7 @@ set mouse=a
 " --- --- ---
 
 "
-" Temporal
+" Temporal?
 "
 set noeb
 set vb
@@ -218,8 +272,6 @@ endif
 
 
 
-
-
 " Plugins
 call plug#begin( '~/vimfiles/plugged' )
 
@@ -281,7 +333,9 @@ autocmd! User GoyoLeave Limelight!
 
 
 "set statusline=						" TODO: Definir un statusline... pero esto como influye con vim-airline????
-set norelativenumber
+
+
+
 
 
 
