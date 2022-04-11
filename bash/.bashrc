@@ -19,6 +19,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # bash aliases
 alias c=cd
+alias cconf='cd ~/src/conf'
 alias cls=clear
 alias ll='ls -la --color=always --show-control-chars --block-size="'\''"1'
 alias open=explorer
@@ -55,7 +56,8 @@ shopt -s nocaseglob
 
 f() {
 	#local	fzf_opt='--preview "bat --italic-text=always --style=header,grid,numbers --color=always --theme=Coldark-Dark --line-range :300 {}"' \
-	local	fzf_opt='--preview "bat --italic-text=always --style=full --color=always --theme=Coldark-Dark --line-range :300 {}"' \
+	#local	fzf_opt='--preview "bat --italic-text=always --style=full --color=always --theme=Coldark-Dark --line-range :300 {}"' \
+	local	fzf_opt='--preview "bat --italic-text=always --style=full -f --theme=gruvbox-dark --line-range :300 {}"' \
 			fzf_color=${FZF_DEFAULT_COMMAND} \
 			fzf_which \
 			fzf_cmd

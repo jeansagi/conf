@@ -114,6 +114,7 @@ set ignorecase					" Enable case insensitive search
 set smartcase					" Enable ignoring case if all lowercase pattern used, don't otherwise
 
 set showmode					" Show editing mode
+set hidden						" Esconder buffers aunque estén 'sucios'
 
 set splitbelow					" Splits horizontales hacia abajo
 set splitright					" Splits verticales hacia la derecha
@@ -281,13 +282,14 @@ call plug#begin( '~/vimfiles/plugged' )
 
 	" Plugins 
 	Plug 'tpope/vim-repeat'					" Repetir inteligente
-	Plug 'tpope/speeddating'				" Aumentar/Disminuir fechas
+	Plug 'tpope/vim-speeddating'			" Aumentar/Disminuir fechas
 	Plug 'tpope/vim-surround'				" Acciones alrrededor
 	Plug 'vim-airline/vim-airline'			" Línea de estado mejorada
 	Plug 'vim-airline/vim-airline-themes'	" Línea de estado mejorada
 	Plug 'junegunn/goyo.vim'				" Distraction free Vim
 	Plug 'junegunn/limelight.vim'			" Focus on current
 	Plug 'mechatroner/rainbow_csv'			" Usar archivos tipo CSV
+	Plug 'szw/vim-maximizer'				" Maximizar el split activo
 
 	" Otros
 	Plug 'sts10/vim-closed-captioning'		" Manipulación de .srt's
@@ -297,6 +299,7 @@ call plug#end()
 set background=dark
 set background=light
 
+"	gruvbox - Configuración
 let g:gruvbox_transparent_bg=1				" Con fondo transparente?
 let g:gruvbox_contrast_light='soft'			" Mejor contraste para ligth
 let g:gruvbox_contrast_hard='hard'			" Mejor contraste para hard
@@ -326,17 +329,19 @@ let g:goyo_width = 72
 let g:limelight_default_coefficient=0.8
 "let g:limelight_paragraph_span = 1
 
+"	Maximizer - Configuración
+let g:maximizer_default_mapping_key = '<F11>'
+
 map <leader>gy :Goyo<CR>
 map <leader>ll :Limelight!!<CR>
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+" Al abrir un URL con gx esto hace que se use toda la URL... creo!?
+let g:netrw_gx="<cWORD>"
+
 
 "set statusline=						" TODO: Definir un statusline... pero esto como influye con vim-airline????
-
-
-
-
 
 
 
