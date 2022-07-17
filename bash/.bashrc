@@ -21,9 +21,12 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 alias c=cd
 alias cconf='cd ~/src/conf'
 alias cls=clear
-alias ll='ls -la --color=always --show-control-chars --block-size="'\''"1'
+#alias ll='ls -la --color=always --show-control-chars --block-size="'\''"1'
+alias oll='ls -la --color=always --show-control-chars --block-size="'\''"1'
+alias ll='lsd -l'
 alias open=explorer
-alias tree=tree.bat
+#alias tree=tree.bat
+alias tree='lsd --tree'
 alias vim=vim.bat
 alias gvim=gvim.bat
 alias uvim=uvim.bat
@@ -38,6 +41,8 @@ alias reiniciar=Reiniciar.bat
 alias suspender=Suspender.bat
 alias co=co.bat
 alias tping=tping.bat
+alias mrauto="/c/Program\ Files/Macrium/Reflect/mrauto.exe"
+alias r=r.bat
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
@@ -51,10 +56,16 @@ alias dcase='shopt -u nocaseglob'
 #
 shopt -s nocaseglob
 
+#Oh-My-Posh
+clear
+eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/kushal.omp.json)"
 
 # functions
 
 f() {
+	# TODO	:	As long as f invoques fzf it should support fzf's arguments!
+	#			So a part from -c as the first argument for f the rest of f should be passed along to fzf
+
 	#local	fzf_opt='--preview "bat --italic-text=always --style=header,grid,numbers --color=always --theme=Coldark-Dark --line-range :300 {}"' \
 	#local	fzf_opt='--preview "bat --italic-text=always --style=full --color=always --theme=Coldark-Dark --line-range :300 {}"' \
 	local	fzf_opt='--preview "bat --italic-text=always --style=full -f --theme=gruvbox-dark --line-range :300 {}"' \

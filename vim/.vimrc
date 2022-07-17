@@ -92,11 +92,11 @@ endif
 
 
 
-
-
 set number						" habilitar números de línea (nu)
 set norelativenumber			" Order de numeración natural!
 set cursorline					" Resalta la línea actual
+set nocursorcolumn				" No resalta la columna actual
+set colorcolumn=0				" No definir columna de margen
 set nolist						" Disable showing invisible characters
 set nowrap						" Long lines don't go to next line
 set tabstop=4					" Tabs equals 4 spaces (ts)
@@ -115,6 +115,9 @@ set smartcase					" Enable ignoring case if all lowercase pattern used, don't ot
 
 set showmode					" Show editing mode
 set hidden						" Esconder buffers aunque estén 'sucios'
+
+set	scrollfocus					" Desplaza el buffer bajo el mouse (así no sea el activo)
+set scrolloff=0					" No dejar lineas fijas al desplazar
 
 set splitbelow					" Splits horizontales hacia abajo
 set splitright					" Splits verticales hacia la derecha
@@ -143,6 +146,7 @@ let maplocaleader="\\"			" Set local leader to Backslash
 nnoremap <silent> <leader>. :noh<CR>	" Des-ilumina la última búsqueda
 
 syntax on						" Enable Color Syntax Highlighting (syn)
+
 
 
 
@@ -215,10 +219,11 @@ set t_vb=
 "set guifont=Cascadia_Code_PL_ExtraLight:h14:W100:cANSI:qDRAFT
 "set guifont=Cascadia_Code_PL_SemiLight:h12:W350:cANSI:qDRAFT
 "set guifont=Cascadia_Code_PL:h12:cANSI:qDRAFT
-set guifont=Cascadia_Code_PL:h14:cANSI:qDRAFT
+"set guifont=Cascadia_Code_PL:h14:cANSI:qDRAFT
 
 "set guifont=CaskaydiaCove_NF:h14:cANSI:qDRAFT
 "set guifont=FiraCode_NF:h14:W200:cANSI:qDRAFT
+set guifont=FiraCode_NF:h14:W500:cANSI:qDRAFT
 
 nmap <silent> <leader>gf :set guifont=*<CR>
 
@@ -226,7 +231,8 @@ nmap <silent> <leader>gf :set guifont=*<CR>
 set encoding=utf-8
 "set renderoptions=type:directx,geom:1,renmode:5,taamode:1
 "set renderoptions=type:directx,gamma:1.0,constrast:0.5,level:1,geom:1,renmode:4,taamode:1
-set renderoptions=type:directx,gamma:1.0,level:1,geom:1,renmode:4,taamode:1
+"set renderoptions=type:directx,gamma:1.0,level:1,geom:1,renmode:4,taamode:1
+set renderoptions=type:directx,gamma:2.0,level:1,geom:1,renmode:5,taamode:1
 
 "
 "----------------------------------------------------
@@ -290,20 +296,22 @@ call plug#begin( '~/vimfiles/plugged' )
 	Plug 'junegunn/limelight.vim'			" Focus on current
 	Plug 'mechatroner/rainbow_csv'			" Usar archivos tipo CSV
 	Plug 'szw/vim-maximizer'				" Maximizar el split activo
+	Plug 'jlanzarotta/bufexplorer'			" Explorador de Buffers
 
 	" Otros
 	Plug 'sts10/vim-closed-captioning'		" Manipulación de .srt's
 
 call plug#end()
 
-set background=dark
+"set background=dark
 set background=light
 
 "	gruvbox - Configuración
 let g:gruvbox_transparent_bg=1				" Con fondo transparente?
-let g:gruvbox_contrast_light='soft'			" Mejor contraste para ligth
-let g:gruvbox_contrast_hard='hard'			" Mejor contraste para hard
-let g:gruvbox_number_column='bg0'			" Color de la línea actual
+let g:gruvbox_contrast_light='hard'			" Mejor contraste para ligth
+let g:gruvbox_contrast_dark='hard'			" Mejor contraste para hard
+let g:gruvbox_number_column='bg0'			" Color del fondo de la línea actual
+
 
 colorscheme gruvbox
 "colorscheme nord
@@ -347,4 +355,6 @@ let g:netrw_gx="<cWORD>"
 
 
 
-"	Atòn Kayé
+"
+"	Atón Kayé
+"
