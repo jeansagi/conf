@@ -95,6 +95,7 @@ endif
 set number						" habilitar números de línea (nu)
 set norelativenumber			" Order de numeración natural!
 set cursorline					" Resalta la línea actual
+set cursorlineopt=number		" Pero solo el número de línea (culopt=both, resalta todo)
 set nocursorcolumn				" No resalta la columna actual
 set colorcolumn=0				" No definir columna de margen
 set nolist						" Disable showing invisible characters

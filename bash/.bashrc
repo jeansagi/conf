@@ -43,6 +43,7 @@ alias co=co.bat
 alias tping=tping.bat
 alias mrauto="/c/Program\ Files/Macrium/Reflect/mrauto.exe"
 alias r=r.bat
+alias hvim=hvim.bat
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
@@ -58,7 +59,8 @@ shopt -s nocaseglob
 
 #Oh-My-Posh
 clear
-eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/kushal.omp.json)"
+#eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/kushal.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/gruvbox.omp.json)"
 
 # functions
 
