@@ -100,6 +100,7 @@ set nocursorcolumn				" No resalta la columna actual
 set colorcolumn=0				" No definir columna de margen
 set nolist						" Disable showing invisible characters
 set nowrap						" Long lines don't go to next line
+set nolinebreak					" Word on the right border cut if wrapping enabled
 set tabstop=4					" Tabs equals 4 spaces (ts)
 set softtabstop=4				" when hitting <BS>, pretend like a tab is removed, even if spaces
 set shiftwidth=4				" number of spaces to use for autoindenting
