@@ -44,6 +44,7 @@ alias tping=tping.bat
 alias mrauto="/c/Program\ Files/Macrium/Reflect/mrauto.exe"
 alias r=r.bat
 alias hvim=hvim.bat
+alias dr=dr.bat
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
