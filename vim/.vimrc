@@ -87,11 +87,7 @@ if has('syntax') && has('eval')
 endif
 
 
-
-
-
-
-
+set updatetime=100				" Actualizar con más frecuencia! (ej:GitGutter)
 set number						" habilitar números de línea (nu)
 set norelativenumber			" Order de numeración natural!
 set cursorline					" Resalta la línea actual
@@ -150,12 +146,8 @@ nnoremap <silent> <leader>. :noh<CR>	" Des-ilumina la última búsqueda
 syntax on						" Enable Color Syntax Highlighting (syn)
 
 
-
-
-
-
 " guioptions options
-if has('win32')
+if has('win32') || has("win64") || has("win16")
 	" Default :				No GUI controls			!
 	set guioptions+=a		" Selected text gets copied !
 
@@ -177,6 +169,11 @@ if has('win32')
 	nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 	nnoremap <C-F4> :if &go=~#'b'<Bar>set go-=b<Bar>else<Bar>set go+=b<Bar>endif<CR>
 	nnoremap <C-F5> :if &go=~#'l'<Bar>set go-=l<Bar>else<Bar>set go+=l<Bar>endif<CR>
+
+	" Fix the shell to something windows-sensible if indeed we're on windows
+	if &shell=~#'bash'
+		set shell=$COMSPEC
+	endif
 endif
 
 " Habilitar listchars para que los invisibles se vean bien cuando se revelen.
@@ -293,6 +290,8 @@ call plug#begin( '~/vimfiles/plugged' )
 	Plug 'tpope/vim-repeat'					" Repetir inteligente
 	Plug 'tpope/vim-speeddating'			" Aumentar/Disminuir fechas
 	Plug 'tpope/vim-surround'				" Acciones alrrededor
+	Plug 'tpope/vim-commentary'				" Comentarios
+	Plug 'tpope/vim-fugitive'				" So awesome it should be illegal
 	Plug 'vim-airline/vim-airline'			" Línea de estado mejorada
 	Plug 'vim-airline/vim-airline-themes'	" Línea de estado mejorada
 	Plug 'junegunn/goyo.vim'				" Distraction free Vim
@@ -300,6 +299,7 @@ call plug#begin( '~/vimfiles/plugged' )
 	Plug 'mechatroner/rainbow_csv'			" Usar archivos tipo CSV
 	Plug 'szw/vim-maximizer'				" Maximizar el split activo
 	Plug 'jlanzarotta/bufexplorer'			" Explorador de Buffers
+	Plug 'airblade/vim-gitgutter'			" Modificaciones por Git
 
 	" Otros
 	Plug 'sts10/vim-closed-captioning'		" Manipulación de .srt's
@@ -348,12 +348,16 @@ map <leader>ll :Limelight!!<CR>
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+" Vim-GitGutter - Configuración
+nmap { <Plug>(GitGutterPrevHunk)
+nmap } <Plug>(GitGutterNextHunk)
+
+
 " Al abrir un URL con gx esto hace que se use toda la URL... creo!?
 let g:netrw_gx="<cWORD>"
 
 
 "set statusline=						" TODO: Definir un statusline... pero esto como influye con vim-airline????
-
 
 
 
