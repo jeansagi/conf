@@ -46,6 +46,7 @@ alias r=r.bat
 alias hvim=hvim.bat
 alias dr=dr.bat
 alias ass="s sysdm.cpl"
+alias todo="hvim 'C:/Users/chuch/OneDrive/Desktop/TODO.txt'"
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
