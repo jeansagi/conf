@@ -141,6 +141,12 @@ endif
 let mapleader=","				" Maps default leader '\' to ','
 let maplocaleader="\\"			" Set local leader to Backslash
 
+"Complements / and ? with to \v -> Very Magic !!
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
+
 nnoremap <silent> <leader>. :noh<CR>	" Des-ilumina la última búsqueda
 
 syntax on						" Enable Color Syntax Highlighting (syn)
