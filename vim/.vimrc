@@ -306,6 +306,7 @@ call plug#begin( '~/vimfiles/plugged' )
 	Plug 'szw/vim-maximizer'				" Maximizar el split activo
 	Plug 'jlanzarotta/bufexplorer'			" Explorador de Buffers
 	Plug 'airblade/vim-gitgutter'			" Modificaciones por Git
+	Plug 'godlygeek/tabular'				" Alineación con base a patrón
 
 	" Otros
 	Plug 'sts10/vim-closed-captioning'		" Manipulación de .srt's
@@ -358,6 +359,32 @@ autocmd! User GoyoLeave Limelight!
 nmap { <Plug>(GitGutterPrevHunk)
 nmap } <Plug>(GitGutterNextHunk)
 
+" Tabular Configuración
+"inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+"
+"function! s:align()
+"  let p = '^\s*|\s.*\s|\s*$'
+"  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+"    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+"    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+"    Tabularize/|/l1
+"    normal! 0
+"    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+"  endif
+"endfunction
+
+inoremap <buffer><silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/\\\@<!|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
 
 " Al abrir un URL con gx esto hace que se use toda la URL... creo!?
 let g:netrw_gx="<cWORD>"
