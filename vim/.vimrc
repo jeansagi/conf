@@ -89,7 +89,7 @@ endif
 
 set updatetime=100				" Actualizar con más frecuencia! (ej:GitGutter)
 set number						" habilitar números de línea (nu)
-set norelativenumber			" Order de numeración natural!
+set relativenumber				" Order de numeración natural!
 set cursorline					" Resalta la línea actual
 set cursorlineopt=number		" Pero solo el número de línea (culopt=both, resalta todo)
 set nocursorcolumn				" No resalta la columna actual
