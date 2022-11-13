@@ -49,6 +49,7 @@ alias ass="s sysdm.cpl"
 alias todo="hvim 'C:/Users/chuch/OneDrive/Desktop/TODO.txt'"
 alias cht='cd ~/src/ht'
 alias bios=bios.bat
+alias vlc='"/c/Program Files/VideoLAN/VLC/vlc.exe"'
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
