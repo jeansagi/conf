@@ -88,6 +88,7 @@ endif
 
 
 set updatetime=100				" Actualizar con más frecuencia! (ej:GitGutter)
+set history=10000				" Una buena historia !
 set number						" habilitar números de línea (nu)
 set relativenumber				" Order de numeración natural!
 set cursorline					" Resalta la línea actual
