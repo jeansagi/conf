@@ -39,6 +39,7 @@ alias cerrar=Cerrar.bat
 alias bloquear=Bloquear.bat
 alias reiniciar=Reiniciar.bat
 alias suspender=Suspender.bat
+alias sus=Suspender.bat
 alias co=co.bat
 alias tping=tping.bat
 alias mrauto="/c/Program\ Files/Macrium/Reflect/mrauto.exe"
