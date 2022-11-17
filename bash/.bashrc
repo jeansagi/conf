@@ -51,6 +51,7 @@ alias todo="hvim 'C:/Users/chuch/OneDrive/Desktop/TODO.txt'"
 alias cht='cd ~/src/ht'
 alias bios=bios.bat
 alias vlc=vlc.bat
+alias obs='sudo obs.bat'
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
