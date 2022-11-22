@@ -52,6 +52,7 @@ alias cht='cd ~/src/ht'
 alias bios=bios.bat
 alias vlc=vlc.bat
 alias obs='sudo obs.bat'
+alias oracloud='ssh -i ~/.ssh/ssh-key-2022-11-20.key ubuntu@144.22.240.195'
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
