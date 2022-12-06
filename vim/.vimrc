@@ -230,7 +230,8 @@ set t_vb=
 "set guifont=CaskaydiaCove_NF:h14:cANSI:qDRAFT
 "set guifont=FiraCode_NF:h14:W200:cANSI:qDRAFT
 "set guifont=FiraCode_NF:h14:W500:cANSI:qDRAFT
-set guifont=FiraCode_NF:h11:cANSI:qDRAFT
+"set guifont=FiraCode_NF:h11:cANSI:qDRAFT
+set guifont=FiraCode_NFM:h11:cANSI:qDRAFT
 
 nmap <silent> <leader>gf :set guifont=*<CR>
 
