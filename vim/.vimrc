@@ -318,6 +318,10 @@ call plug#end()
 "set background=dark
 set background=light
 
+" Mapeos para cambiar entre fondo claro y oscuro
+map <silent> <leader>bl :set bg=light<CR>
+map <silent> <leader>bd :set bg=dark<CR>
+
 "	gruvbox - Configuración
 let g:gruvbox_transparent_bg=1				" Con fondo transparente?
 let g:gruvbox_contrast_light='hard'			" Mejor contraste para ligth
