@@ -319,8 +319,14 @@ call plug#end()
 set background=light
 
 " Mapeos para cambiar entre fondo claro y oscuro
-map <silent> <leader>bl :set bg=light<CR>
-map <silent> <leader>bd :set bg=dark<CR>
+"
+" 1era. Opción: Usando if then else endif
+"nnoremap <silent> <F12> :if &bg=='dark'<Bar>set bg=light<Bar>else<Bar>set bg=dark<Bar>endif<CR>
+"
+" 2da.  Opción: Usando  <Expr> ? <Action if-true> : <Action if-false>
+" Me gusta más esta opción me parece mas limpia.
+nnoremap <silent> <expr> <F12> &bg=='dark' ? ':set bg=light<CR>' : ':set bg=dark<CR>'
+
 
 "	gruvbox - Configuración
 let g:gruvbox_transparent_bg=1				" Con fondo transparente?
