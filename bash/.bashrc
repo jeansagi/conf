@@ -107,6 +107,23 @@ f() {
 }
 
 
+# As f return lines, fl returns a single line with every original line quoted!
+fl() {
+	if [ "$1" == '-q' ]; then
+		f "$@" | sed "s/.*/'&'/g" | sed -z "s/\n/ /g"
+	else
+		if [ "$1" == '-dq' ]; then
+			f "$@" | sed 's/.*/"&"/g' | sed -z 's/\n/ /g'
+		else
+			f "$@" | sed -z "s/\n/ /g"
+		fi
+	fi
+
+	echo
+	return 0
+}
+
+
 #show() { local var=$1; echo $1="${!var}"; }		# No fué TAN fácil esto!!
 show() {											# Versión más útil !
 	local	green_fg="\e[1;49;92m" \
