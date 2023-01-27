@@ -105,6 +105,7 @@ set shiftround					" use multiple of shiftwidth when indenting with '<' and '>'
 set backspace=indent,eol,start	" allow backspacing over everything in insert mode
 set autoindent					" always set autoindenting on
 set copyindent					" copy the previous indentation on autoindenting
+set confirm						" En operaciones de archivo pide confirmación en lugar de fallar
 
 set hlsearch					" Enable search highlighting
 set incsearch					" Enable incremental searching while typing
@@ -326,6 +327,10 @@ set background=light
 " 2da.  Opción: Usando  <Expr> ? <Action if-true> : <Action if-false>
 " Me gusta más esta opción me parece mas limpia.
 nnoremap <silent> <expr> <F12> &bg=='dark' ? ':set bg=light<CR>' : ':set bg=dark<CR>'
+
+
+" Mapeos para abrir archivos
+nmap <silent> <leader>bo :browse confirm e<CR>
 
 
 "	gruvbox - Configuración
