@@ -330,7 +330,8 @@ nnoremap <silent> <expr> <F12> &bg=='dark' ? ':set bg=light<CR>' : ':set bg=dark
 
 
 " Mapeos para abrir archivos
-nmap <silent> <leader>bo :browse confirm e<CR>
+nnoremap <silent> <F9> :browse confirm e<CR>
+inoremap <silent> <F9> <C-o>:browse confirm e<CR>
 
 
 "	gruvbox - Configuración
