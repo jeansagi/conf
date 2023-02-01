@@ -333,6 +333,8 @@ nnoremap <silent> <expr> <F12> &bg=='dark' ? ':set bg=light<CR>' : ':set bg=dark
 nnoremap <silent> <F9> :browse confirm e<CR>
 inoremap <silent> <F9> <C-o>:browse confirm e<CR>
 
+" Que se puedan abrir archivos con espacios en el nombre con gf
+set isfname+=32
 
 "	gruvbox - Configuración
 let g:gruvbox_transparent_bg=1				" Con fondo transparente?
