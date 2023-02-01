@@ -336,6 +336,14 @@ inoremap <silent> <F9> <C-o>:browse confirm e<CR>
 " Que se puedan abrir archivos con espacios en el nombre con gf
 set isfname+=32
 
+"Permite cambiar / por \ en un rango.
+command! -range Bslash <line1>,<line2>s;/;\\;g
+"O viceversa!
+command! -range Fslash <line1>,<line2>s;\\;/;g
+"Mapeos para ello
+vnoremap ,b :Bslash<CR>:noh<CR>
+vnoremap ,f :Fslash<CR>:noh<CR>
+
 "	gruvbox - Configuración
 let g:gruvbox_transparent_bg=1				" Con fondo transparente?
 let g:gruvbox_contrast_light='hard'			" Mejor contraste para ligth
