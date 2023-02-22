@@ -310,6 +310,7 @@ call plug#begin( '~/vimfiles/plugged' )
 	Plug 'jlanzarotta/bufexplorer'			" Explorador de Buffers
 	Plug 'airblade/vim-gitgutter'			" Modificaciones por Git
 	Plug 'godlygeek/tabular'				" Alineación con base a patrón
+	Plug 'mg979/vim-visual-multi'			" Múltiples cursores como en Sublime/Code
 
 	" Otros
 	Plug 'sts10/vim-closed-captioning'		" Manipulación de .srt's
