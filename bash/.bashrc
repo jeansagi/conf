@@ -53,6 +53,7 @@ alias bios=bios.bat
 alias vlc=vlc.bat
 alias obs='sudo obs.bat'
 alias oracloud='ssh -i ~/.ssh/ssh-key-2022-11-20.key ubuntu@144.22.240.195'
+alias 1v=scrcpy.bat
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
@@ -207,18 +208,19 @@ test_24bit_colors() {
 }
 
 
-1v() {
-	echo adb tcpip 5555;
-	adb tcpip 5555;
-	echo;
+#1v() {
+#	echo adb tcpip 5555;
+#	adb tcpip 5555;
+#	echo;
+#
+#	echo adb connect 192.168.1.2;
+#	adb connect 192.168.1.2;
+#	echo;
+#
+#	echo scrcpy.bat;
+#	scrcpy.bat
+#}
 
-	echo adb connect 192.168.1.2;
-	adb connect 192.168.1.2;
-	echo;
-
-	echo scrcpy.bat;
-	scrcpy.bat
-}
 
 2ac3() {
 	if [[ -z "$@" ]]; then
