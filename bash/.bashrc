@@ -20,6 +20,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # bash aliases
 alias c=cd
 alias cconf='cd ~/src/conf'
+alias cbis='cd ~/src/bisionplus'
 alias cls=clear
 #alias ll='ls -la --color=always --show-control-chars --block-size="'\''"1'
 alias oll='ls -la --color=always --show-control-chars --block-size="'\''"1'
