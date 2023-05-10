@@ -19,8 +19,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # bash aliases
 alias c=cd
-alias cconf='cd ~/src/conf;cls;tree -d;echo;git status'
-alias cbis='cd ~/src/bisionplus;cls;tree -d;echo;git status'
+alias cconf='cd ~/src/conf;cls;tree -d;echo;git status; echo'
+alias cbis='cd ~/src/bisionplus;cls;tree -d;echo;git status; echo'
 alias cls=clear
 #alias ll='ls -la --color=always --show-control-chars --block-size="'\''"1'
 alias oll='ls -la --color=always --show-control-chars --block-size="'\''"1'
