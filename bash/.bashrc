@@ -19,8 +19,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # bash aliases
 alias c=cd
-alias cconf='cd ~/src/conf;cls;tree;echo;git status'
-alias cbis='cd ~/src/bisionplus;cls;tree;echo;git status'
+alias cconf='cd ~/src/conf;cls;tree -d;echo;git status'
+alias cbis='cd ~/src/bisionplus;cls;tree -d;echo;git status'
 alias cls=clear
 #alias ll='ls -la --color=always --show-control-chars --block-size="'\''"1'
 alias oll='ls -la --color=always --show-control-chars --block-size="'\''"1'
@@ -50,7 +50,7 @@ alias dr=dr.bat
 alias ass="s sysdm.cpl"
 alias todo="hvim 'C:/Users/chuch/OneDrive/Desktop/TODO.txt'"
 alias cht='cd ~/src/ht'
-alias bios=bios.bat
+alias bios='sudo bios.bat'
 alias vlc=vlc.bat
 alias obs='sudo obs.bat'
 alias oracloud='ssh -i ~/.ssh/ssh-key-2022-11-20.key ubuntu@144.22.240.195'
@@ -71,8 +71,8 @@ shopt -s nocaseglob
 #Oh-My-Posh
 clear
 #eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/kushal.omp.json)"
-eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/gruvbox.omp.json)"
-#eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/night-owl.omp.json)"
+#eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/gruvbox.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/night-owl.omp.json)"
 
 # functions
 
