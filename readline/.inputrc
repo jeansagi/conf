@@ -1,0 +1,22 @@
+$include /etc/inputrc
+
+# none, visible or audible
+set bell-style none
+
+# Ignore case for the command-line-completion functionality
+# on:  default on a Windows style console
+# off: default on a *nix style console
+set completion-ignore-case on
+
+set completion-prefix-display-length 3
+
+# visible-stats
+# Append a mark according to the file type in a listing
+set colored-stats on
+set visible-stats on
+set mark-directories on
+set mark-symlinked-directories on
+
+# NO Beep first
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
