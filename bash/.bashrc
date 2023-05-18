@@ -16,6 +16,7 @@ export LESS="$LESS -R -Q -X -F"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS='--ansi -e -m --height 80% --layout=reverse --info=inline --border --preview-window right:60% --color "fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export EDITOR=hvim
 
 # bash aliases
 alias c=cd

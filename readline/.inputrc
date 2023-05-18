@@ -22,5 +22,5 @@ set show-all-if-ambiguous on
 set show-all-if-unmodified on
 
 # Edit mode
-set -o vi
+set editing-mode vi
 
