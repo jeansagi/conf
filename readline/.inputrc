@@ -20,3 +20,7 @@ set mark-symlinked-directories on
 # NO Beep first
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
+
+# Edit mode
+set -o vi
+
