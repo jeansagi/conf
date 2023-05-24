@@ -62,7 +62,7 @@ alias evo=git-evo.bat
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
 alias mp=multipass
 alias e=explorer
-alias s=start
+alias s='start ""'
 alias cuni='c /c/unix'
 alias so=source
 alias ecase='shopt -s nocaseglob'
