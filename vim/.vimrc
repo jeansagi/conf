@@ -406,7 +406,11 @@ endfunction
 let g:netrw_gx="<cWORD>"
 
 
-"set statusline=						" TODO: Definir un statusline... pero esto como influye con vim-airline????
+" set statusline=						// TODO: Definir un statusline... pero esto como influye con vim-airline????
+
+" Spell languages
+set spelllang+=es
+
 
 
 
