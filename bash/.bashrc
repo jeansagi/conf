@@ -21,7 +21,7 @@ export EDITOR=hvim
 # bash aliases
 alias c=cd
 alias cconf='cd ~/src/conf;cls;tree -d;echo;git status; echo'
-alias cbis='cd ~/src/bisionplus;cls;tree -d;echo;git status; echo'
+alias cbis='cd ~/src/bisionplus;cls;tree -d;echo;git status -uall; echo'
 alias cls=clear
 #alias ll='ls -la --color=always --show-control-chars --block-size="'\''"1'
 alias oll='ls -la --color=always --show-control-chars --block-size="'\''"1'
