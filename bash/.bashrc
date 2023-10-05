@@ -75,8 +75,8 @@ shopt -s nocaseglob
 clear
 #eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/kushal.omp.json)"
 #eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/gruvbox.omp.json)"
-#eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/night-owl.omp.json)"
-eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/montys.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/night-owl.omp.json)"
+#eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/montys.omp.json)"
 
 # functions
 
