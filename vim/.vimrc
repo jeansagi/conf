@@ -149,7 +149,12 @@ vnoremap / /\v
 nnoremap ? ?\v
 vnoremap ? ?\v
 
-nnoremap <silent> <leader>. :noh<CR>	" Des-ilumina la última búsqueda
+" Busca el patrón ([<ip>])...
+"	Bueno en realidad ([<<num>.<num>.<num>.<num>>]) que es casi casi...
+nnoremap <silent> <leader>ip /([\d\+\.\d\+\d\+\.\d\+\.\d\+\])<CR>:noh<CR>
+
+" Des-ilumina la última búsqueda
+nnoremap <silent> <leader>. :noh<CR>
 
 syntax on						" Enable Color Syntax Highlighting (syn)
 
