@@ -58,6 +58,7 @@ alias oracloud='ssh -i ~/.ssh/ssh-key-2022-11-20.key ubuntu@144.22.240.195'
 alias 1v=scrcpy.bat
 alias evo=git-evo.bat
 alias cup=cup.bat
+alias ttb='s ttb'
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
