@@ -59,6 +59,7 @@ alias 1v=scrcpy.bat
 alias evo=git-evo.bat
 alias cup=cup.bat
 alias ttb='s ttb'
+alias rtb='rtb.bat'
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
