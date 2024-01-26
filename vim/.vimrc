@@ -310,6 +310,7 @@ call plug#begin( '~/vimfiles/plugged' )
 	Plug 'vim-airline/vim-airline-themes'	" Línea de estado mejorada
 	Plug 'junegunn/goyo.vim'				" Distraction free Vim
 	Plug 'junegunn/limelight.vim'			" Focus on current
+	Plug 'junegunn/vim-peekaboo'			" Easier register handling
 	Plug 'mechatroner/rainbow_csv'			" Usar archivos tipo CSV
 	Plug 'szw/vim-maximizer'				" Maximizar el split activo
 	Plug 'jlanzarotta/bufexplorer'			" Explorador de Buffers
