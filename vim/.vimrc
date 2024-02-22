@@ -118,6 +118,8 @@ set hidden						" Esconder buffers aunque estén 'sucios'
 
 set	scrollfocus					" Desplaza el buffer bajo el mouse (así no sea el activo)
 set scrolloff=0					" No dejar lineas fijas al desplazar
+set smoothscroll				" Better scroll <<<? 
+set display=lastline			" @@@ at the end of the lastline 
 
 set splitbelow					" Splits horizontales hacia abajo
 set splitright					" Splits verticales hacia la derecha
