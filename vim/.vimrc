@@ -425,6 +425,12 @@ set spelllang+=es
 
 
 
+"
+" Revisar si esto vale la pena agregarlo el día de mañana... Tal vez matchit? 
+"
+" packadd! matchit
+" packadd! editorconfig
+"
 
 "
 "	Atón Kayé
