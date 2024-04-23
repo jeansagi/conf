@@ -62,6 +62,7 @@ alias ttb='s ttb'
 alias rtb='rtb.bat'
 alias rt='rt.bat'
 alias d=docker
+alias up='up.bat'
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
