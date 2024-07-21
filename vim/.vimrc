@@ -220,6 +220,7 @@ set mouse=a
 
 " TODO:	Revisar como funciona vimgrep
 "		Revisar como funciona las QuickLists... Quickfix?
+"		Revisar shortcuts para Spell: ]s [s zg z=
 
 " --- --- ---
 
