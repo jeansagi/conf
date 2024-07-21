@@ -218,6 +218,9 @@ set mouse=a
 "		- Cuando ya se termine .vimrc (o al menos cuando esté adelantado), trabajar en .gvimrc...
 " 
 
+" TODO:	Revisar como funciona vimgrep
+"		Revisar como funciona las QuickLists... Quickfix?
+
 " --- --- ---
 
 "
