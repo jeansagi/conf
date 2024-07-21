@@ -423,7 +423,8 @@ let g:netrw_gx="<cWORD>"
 " Spell languages
 set spelllang+=es
 
-
+" Reload file automatically if changed outside while in vim
+set autoread
 
 
 "
