@@ -363,9 +363,13 @@ let g:gruvbox_contrast_light='hard'			" Mejor contraste para ligth
 let g:gruvbox_contrast_dark='hard'			" Mejor contraste para hard
 let g:gruvbox_number_column='bg0'			" Color del fondo de la línea actual
 
-
-colorscheme gruvbox
-"colorscheme nord
+" Try to set gruvbox if available else morning
+try
+	colorscheme gruvbox
+	"colorscheme nord
+catch
+	colorscheme morning
+endtry
 
 set noshowmode								" No mostrar el mode de vim
 set laststatus=2							" Mostrar siempre la línea de estado
