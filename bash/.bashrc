@@ -63,6 +63,7 @@ alias rtb='rtb.bat'
 alias rt='rt.bat'
 alias d=docker
 alias up='up.bat'
+alias fvl=fvl.bat
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
@@ -80,11 +81,12 @@ shopt -s nocaseglob
 eval "$(zoxide init --cmd cd bash)"
 
 #Oh-My-Posh
-clear
+#clear
 #eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/kushal.omp.json)"
 #eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/gruvbox.omp.json)"
 eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/night-owl.omp.json)"
 #eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/montys.omp.json)"
+clear
 
 # functions
 
