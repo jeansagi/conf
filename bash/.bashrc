@@ -64,6 +64,7 @@ alias rt='rt.bat'
 alias d=docker
 alias up='up.bat'
 alias fvl=fvl.bat
+alias pdi=pdi.bat
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
@@ -86,7 +87,6 @@ eval "$(zoxide init --cmd cd bash)"
 #eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/gruvbox.omp.json)"
 eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/night-owl.omp.json)"
 #eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/montys.omp.json)"
-clear
 
 # functions
 
