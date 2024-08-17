@@ -18,6 +18,10 @@ export FZF_DEFAULT_OPTS='--ansi -e -m --height 80% --layout=reverse --info=inlin
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export EDITOR=hvim
 
+# BAT global settings
+export BAT_THEME=gruvbox-dark
+export BAT_STYLE=header,grid,numbers,snip
+
 # bash aliases
 alias c=cd
 alias cconf='cd ~/src/conf;cls;tree -d;echo;git status -uall; echo'
