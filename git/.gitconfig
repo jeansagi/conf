@@ -1,0 +1,44 @@
+[user]
+	name = Jean Sagi
+	email = jeansagi@gmail.com
+[core]
+#	editor = vim
+#	editor = '/c/Windows/gvim.bat' -f -i NONE
+	editor = '/c/unix/hvim.bat' -f -i NONE
+[color]
+	ui = auto
+
+[mergetool]
+ 	prompt = false
+ 	keepBackup = false
+ 	keepTemporaries = false
+
+[merge]
+	tool = winmerge
+
+[mergetool "winmerge"]
+	name = WinMerge
+	trustExitCode = true
+#	cmd = "/c/Program\\ Files\\ \\(x86\\)/WinMerge/WinMergeU.exe" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
+#	cmd = "/c/Program\\ Files\\ \\(x86\\)/WinMerge/WinMergeU.exe" -u -e -fm -wl -dl \"Local\" -wr -dr \"Remote\" $LOCAL $MERGED $REMOTE
+	cmd = "/c/Program\\ Files/WinMerge/WinMergeU.exe" -u -e -fm -wl -dl \"Local\" -wr -dr \"Remote\" $LOCAL $MERGED $REMOTE
+
+[diff]
+	tool = winmerge
+
+[difftool "winmerge"]
+	name = WinMerge
+	trustExitCode = true
+#	cmd = "/c/Program\\ Files\\ \\(x86\\)/WinMerge/WinMergeU.exe" -u -e $LOCAL $REMOTE
+	cmd = "/c/Program\\ Files/WinMerge/WinMergeU.exe" -u -e $LOCAL $REMOTE
+
+[safe]
+	directory = C:/Users/chuch/vimfiles/plugged/vim-airline
+[gui]
+	recentrepo = C:/Users/chuch/src/bisionplus
+	fontdiff = -family \"FiraCode NFM\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	encoding = utf-8
+[alias]
+	ca = commit -a
+	psa = push --all
+	pla = pull --all
