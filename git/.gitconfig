@@ -33,11 +33,16 @@
 	cmd = "/c/Program\\ Files/WinMerge/WinMergeU.exe" -u -e $LOCAL $REMOTE
 
 [safe]
-	directory = C:/Users/chuch/vimfiles/plugged/vim-airline
+#	directory = C:/Users/chuch/vimfiles/plugged/vim-airline
+#	directory = C:/Users/F00001375/vimfiles/plugged/vim-airline
+	directory = ~/vimfiles/plugged/vim-airline
 [gui]
 	recentrepo = C:/Users/chuch/src/bisionplus
 	fontdiff = -family \"FiraCode NFM\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 	encoding = utf-8
+#[http]
+#	sslVerify = true
+#	sslCAInfo = C:/Users/F00001375/.crt/ca-bundle.crt
 [alias]
 	ca = commit -a
 	psa = push --all
