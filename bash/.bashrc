@@ -71,7 +71,7 @@ alias fvl=fvl.bat
 alias pdi=pdi.bat
 alias desk='s shell:Desktop'
 alias down='s shell:Downloads'
-alias bh='bat -l help --style=grid,numbers --theme=gruvbox-dark'
+alias bh='bat -l help --style=grid,numbers --theme=gruvbox-dark --wrap=never'
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
