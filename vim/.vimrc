@@ -366,6 +366,7 @@ let g:gruvbox_transparent_bg=1				" Con fondo transparente?
 let g:gruvbox_contrast_light='hard'			" Mejor contraste para ligth
 let g:gruvbox_contrast_dark='hard'			" Mejor contraste para hard
 let g:gruvbox_number_column='bg0'			" Color del fondo de la línea actual
+let g:gruvbox_italic=1						" Habilitar itálicas
 
 " Try to set gruvbox if available else morning
 try
