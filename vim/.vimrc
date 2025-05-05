@@ -106,6 +106,7 @@ set backspace=indent,eol,start	" allow backspacing over everything in insert mod
 set autoindent					" always set autoindenting on
 set copyindent					" copy the previous indentation on autoindenting
 set confirm						" En operaciones de archivo pide confirmación en lugar de fallar
+set diffopt-=inline:simple		" Si existiese inline:simple se quita.
 set diffopt+=inline:char		" Mejora resaltar las diferencias al comparar (char > word)!
 
 set hlsearch					" Enable search highlighting
