@@ -85,9 +85,6 @@ alias dcase='shopt -u nocaseglob'
 #
 shopt -s nocaseglob
 
-## Use zoxide but not z nor zi instead cd and cdi
-#eval "$(zoxide init --cmd cd bash)"
-
 #Oh-My-Posh
 #clear
 #eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/themes/kushal.omp.json)"
