@@ -47,3 +47,5 @@
 	ca = commit -a
 	psa = push --all
 	pla = pull --all
+[credential "helperselector"]
+	selected = manager
