@@ -21,7 +21,9 @@
 	trustExitCode = true
 #	cmd = "/c/Program\\ Files\\ \\(x86\\)/WinMerge/WinMergeU.exe" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
 #	cmd = "/c/Program\\ Files\\ \\(x86\\)/WinMerge/WinMergeU.exe" -u -e -fm -wl -dl \"Local\" -wr -dr \"Remote\" $LOCAL $MERGED $REMOTE
-	cmd = "/c/Program\\ Files/WinMerge/WinMergeU.exe" -u -e -fm -wl -dl \"Local\" -wr -dr \"Remote\" $LOCAL $MERGED $REMOTE
+#	cmd = "/c/Program\\ Files/WinMerge/WinMergeU.exe" -u -e -fm -wl -dl \"Local\" -wr -dr \"Remote\" $LOCAL $MERGED $REMOTE
+#	cmd = ~/scoop/apps/winmerge/current/WinMergeU.exe -u -e -fm -wl -dl \"Local\" -wr -dr \"Remote\" $LOCAL $MERGED $REMOTE
+	cmd = "/C/Users/F00001375/AppData/Local/Programs/WinMerge/WinMergeU.exe" -u -e -fm -wl -dl \"Local\" -wr -dr \"Remote\" $LOCAL $MERGED $REMOTE
 
 [diff]
 	tool = winmerge
@@ -30,7 +32,9 @@
 	name = WinMerge
 	trustExitCode = true
 #	cmd = "/c/Program\\ Files\\ \\(x86\\)/WinMerge/WinMergeU.exe" -u -e $LOCAL $REMOTE
-	cmd = "/c/Program\\ Files/WinMerge/WinMergeU.exe" -u -e $LOCAL $REMOTE
+#	cmd = "/c/Program\\ Files/WinMerge/WinMergeU.exe" -u -e $LOCAL $REMOTE
+#	cmd = ~/scoop/apps/winmerge/current/WinMergeU.exe -u -e $LOCAL $REMOTE
+	cmd = "/C/Users/F00001375/AppData/Local/Programs/WinMerge/WinMergeU.exe" -u -e $LOCAL $REMOTE
 
 [safe]
 #	directory = C:/Users/chuch/vimfiles/plugged/vim-airline
