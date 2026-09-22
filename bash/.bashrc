@@ -7,7 +7,7 @@ export TERM=xterm-direct
 eval "$(dircolors)"
 
 # LESS configuration
-export LESS="$LESS -R -Q -X -F"
+export LESS="${LESS} -R -Q -X -F"
 
 #fzf bash completions and key-bindings
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
