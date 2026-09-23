@@ -88,6 +88,7 @@ alias winget=winget.exe
 
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
+alias adb='~/scoop/apps/scrcpy/current/adb.exe'
 alias mp=multipass
 alias e=explorer
 alias s='start ""'
