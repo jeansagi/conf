@@ -96,6 +96,7 @@ alias cuni='c /c/unix'
 alias so=source
 alias ecase='shopt -s nocaseglob'
 alias dcase='shopt -u nocaseglob'
+alias h=history
 #
 shopt -s nocaseglob
 
