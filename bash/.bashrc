@@ -1,3 +1,81 @@
+#!/bin/bash
+gioconda() {
+	if [ -z "${GIOCONDA_SHLVL+x}" ]; then
+		# set GIOCONDA_SHLVL first time gioconda is called 
+		\export GIOCONDA_SHLVL=0
+	else
+		# GIOCONDA__SHLVL was already set
+
+		if [ "$1" == '-f' ]; then
+			# Allow to be called again if forced!
+			# But count how many times it has been called
+			((GIOCONDA_SHLVL++))
+			if [ "$2" != '-q' ]; then
+				echo "Warning: gioconda was already called (${GIOCONDA_SHLVL})!"
+			fi
+		else
+			# Otherwise NOT ! and
+			# Consider an error to call gioconda more than once !!
+			if [ "$1" != "-q" ] && [ "$2" != "-q" ]; then
+				echo "Error: gioconda was already called (${GIOCONDA_SHLVL})!"
+			fi
+			return -1
+		fi
+	fi
+
+	# Not any problem... let's set conda and the "py" alias
+
+	#
+	# Esta es una forma no muy ortodoxa de hacer visible conda !
+	#
+	# . '/c/Users/F00001375/src/miniconda3/etc/profile.d'/conda.sh
+	#
+	# Mejor es usar "conda init bash"
+	#
+	# PERO:
+	#
+	# * `conda init bash` modifica .bash_profile !! así que lo que se agregó allá
+	#    se comenta y se agrega aquí...
+	#
+	# PERO:
+	#
+	# * CONDA tiene un bug y hace que la modificación que agrega `conda init bash`
+	#   falle si python no se define que funionará en UTF-8 !, por lo que toca
+	#   arreglarlo !
+	#
+
+	#
+	# Esto estaba en .bash_profile y se pasó aquí !
+	#
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	if [ -f '/c/Users/F00001375/src/miniconda3/Scripts/conda.exe' ]; then
+		#
+		# Conda BUG !! : Si python no está en utf-8 el eval siguiente fallará
+		#
+		export PYTHONUTF8=1
+		#export PYTHONIOENCODING=utf8				# Esto también es una alternativa
+		#export PYTHONLEGACYWINDOWSSTDIO=utf-8		# Esto no es alternativa
+		eval "$('/c/Users/F00001375/src/miniconda3/Scripts/conda.exe' 'shell.bash' 'hook')"
+	fi
+	# <<< conda initialize <<<
+
+	alias py=python
+
+	local post_message
+	if (( GIOCONDA_SHLVL > 0 )); then
+		post_message="... again(${GIOCONDA_SHLVL})"
+	else
+		post_message=""
+	fi
+
+	if [ "$1" != "-q" ] && [ "$2" != "-q" ]; then
+		echo "Success: conda and "'py'" alias are set${post_message}."
+	fi
+
+	return 0
+}
+
 #export TERM=xterm-24bit
 export COLORTERM=24bit
 export TERM=xterm-direct
@@ -87,8 +165,8 @@ alias winget=winget.exe
 # winget search "sql server" | rg -i express
 
 #
-alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
 alias adb='~/scoop/apps/scrcpy/current/adb.exe'
+alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
 alias mp=multipass
 alias e=explorer
 alias s='start ""'
@@ -99,6 +177,18 @@ alias dcase='shopt -u nocaseglob'
 alias h=history
 #
 shopt -s nocaseglob
+
+# conda init bash agrega algunas líneas de inicialización
+# dichas líneas se pasan a una función llamada gioconda()
+# De tal forma que al iniciar bash conda no sea accesible
+# ni tampoco Python.
+# Solo invocando gioconda serán accesibles.
+if [ -n "${GIOCONDA_SHLVL+x}" ]; then
+	# .bashrc and GIOCONDA_SHLVL is set !!?
+	# That means we are in a kind of subshell
+	# So we need to force and silently initiate gioconda
+	gioconda -f -q
+fi
 
 #Oh-My-Posh
 #clear
