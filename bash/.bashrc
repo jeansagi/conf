@@ -74,6 +74,18 @@ alias desk='s shell:Desktop'
 alias down='s shell:Downloads'
 alias bh='bat -l help --style=grid,numbers --theme=gruvbox-dark --wrap=never'
 
+# Winget se comporta de manera extraña!
+# Supuestamente este alias (que entre otras parece que bash define, pero no este .bashrc)
+# hace que winget se comporte bien en Bash!! pero no es el caso...
+#
+#alias winget='winpty winget.exe'
+#
+# Lo raro es que ahora, supuestamente winget solito si se comporta bien con Bash...
+# Por lo que se deja este alias que usa winget sin winpty.
+alias winget=winget.exe
+# De esta forma por ejemplo el siguiente comando no tiene problemas.
+# winget search "sql server" | rg -i express
+
 #
 alias ppath='echo -e PATH =\\t$PATH | sed "s/:/:\n\t/g"'
 alias mp=multipass
