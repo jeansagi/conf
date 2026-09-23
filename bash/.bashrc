@@ -60,6 +60,7 @@ alias vlc=vlc.bat
 alias obs='sudo obs.bat'
 alias oracloud='ssh -i ~/.ssh/ssh-key-2022-11-20.key ubuntu@144.22.240.195'
 alias 1v=scrcpy.bat
+alias e50f=' clear; echo adb tcpip 5555; echo adb tcpip 192.168.1.2; echo; echo -e "scrcpy                                           \\"; echo -e "\t--audio-buffer=128 --audio-codec=raw     \\"; echo -e "\t--audio-source=output --keyboard=uhid    \\"; echo -e "\t--kill-adb-on-close --power-off-on-close \\"; echo -e "\t--max-fps=60 --render-driver=opengl -S   \\"; echo -e "\t--tcpip=+192.168.1.2:5555 -V debug -w    \\"; echo -e "\t--video-codec=h265                       \\"; echo -e "\t--video-encoder=c2.qti.hevc.encoder      \\"; echo -e "\t--window-title=\"JeanSagi'\''s e50f\" -t      \\"; echo -e "\t..."; echo; adb tcpip 5555 2> /dev/null; adb connect 192.168.1.2 > /dev/null; scrcpy --audio-buffer=128 --audio-codec=raw --audio-source=output --keyboard=uhid --kill-adb-on-close --power-off-on-close --max-fps=60 --render-driver=opengl -S --tcpip=+192.168.1.2:5555 -V debug -w --video-codec=h265 --video-encoder=c2.qti.hevc.encoder --window-title="Jean Sagi'\''s e50f" -t '
 alias evo=git-evo.bat
 alias cup=cup.bat
 alias ttb='s ttb'
