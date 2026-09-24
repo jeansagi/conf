@@ -340,6 +340,362 @@ call plug#begin()
 
 call plug#end()
 
+" Esto ha faltado desde siempre?
+filetype plugin indent on
+
+let g:sql_type_default = 'sqlite'
+
+" vim-dadbod configuration
+let g:db_ui_use_nerd_fonts = 1
+let g:db_ui_winwidth       = 40
+
+" vim-dadbod-completion configuration
+let g:vim_dadbod_completion_lowercase_keywords = 1
+
+" vim-asyncomplete configuration
+let g:asyncomplete_auto_popup       = 0		" Won't show autocomplete after restarting !
+let g:asyncomplete_popup_delay      = 200
+let g:asyncomplete_auto_completeopt = 0		" Deshabilitar? (Default 1)
+let g:asyncomplete_min_chars        = 2		" Default = 0
+
+set completeopt=menuone,noinsert,noselect,preview
+
+" Autocomplete enabled for sql files
+autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+
+augroup asyncomplete_sql
+  autocmd!
+  autocmd FileType sql call asyncomplete#register_source({
+        \ 'name': 'omni',
+        \ 'allowlist': ['sql'],
+        \ 'completor': function('asyncomplete#sources#omni#completor')
+        \ })
+augroup END
+
+" augroup asyncomplete_buffer
+"   autocmd!
+"   autocmd FileType sql call asyncomplete#register_source({
+"         \ 'name': 'buffer',
+"         \ 'allowlist': ['sql'],
+"         \ 'completor': function('asyncomplete#sources#buffer#completor'),
+"         \ 'priority': 5
+"         \ })
+" augroup END
+
+" Autocompletr <C-x><C-o> when writing .
+inoremap <expr> . pumvisible() ? '.' : '.<C-x><C-o>'
+
+" Tab completion : A la hora de la verdad no me gusta completar con Tab !
+"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Enter (CR=<cr>=Carriage Return) close autocomplete if open.
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
+
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+" For Vim 8 (<c-@> corresponds to <c-space>):
+" imap <c-@> <Plug>(asyncomplete_force_refresh)
+" At least for Vim 9.x Is tis indeed <c-space> ! 'cause <c-@> DOES NOT WORK!
+
+"autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+
+
+" Esto no FUNCIONA !!
+" inoremap <expr> <Space> <SID>sql_join_complete()
+" function! s:sql_join_complete()
+"   let line = getline('.')
+"   let col  = col('.') - 1
+"   let before = strpart(line, 0, col)
+" 
+"   if before =~? '\v(join|from)\s+$'
+"     return "\<Space>\<C-x>\<C-o>"
+"   endif
+" 
+"   return "\<Space>"
+" endfunction
+ 
+"augroup sql_join_completion
+"  autocmd!
+"  autocmd FileType sql inoremap <buffer> <expr> <Space> \
+"    getline('.')[0:col('.')-2] =~? '\v(join|from)\s*$'
+"    ? "\<Space>\<C-x>\<C-o>"
+"    : "\<Space>"
+"augroup END
+
+" Ejecutar querys
+nnoremap <silent> <F5> <Plug>(DBUI_ExecuteQuery)
+nnoremap <silent> <S-F5> vip<Plug>(DBUI_ExecuteQuery)
+vnoremap <silent> <F5> <Plug>(DBUI_ExecuteQuery)
+inoremap <silent> <F5> <C-o><Plug>(DBUI_ExecuteQuery)
+"inoremap <silent> <F5> <C-o><Plug>(DBUI_ExecuteQuery)<Cmd>call timer_start(0, {-> feedkeys("a","n")})<CR>
+
+" Lanzar DBUI
+nnoremap <silent> <F6> :DBUI<CR>
+
+" Esquema de la tabla bajo el cursor
+nnoremap <silent> <F7> yiw:DB .schema <C-r>"<CR>
+
+" Ver las tablas en la base de datos actual
+nnoremap <silent> <F8> :DB .tables<CR>
+
+
+" augroup dadbod_completion
+"   autocmd!
+"   autocmd FileType sql call asyncomplete#register_source({
+"         \ 'name': 'dadbod',
+"         \ 'allowlist': ['sql'],
+"         \ 'completor': function('vim_dadbod_completion#omni')
+"         \ })
+" augroup END
+
+"autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+"inoremap <F6> <C-x><C-o>
+"augroup SQLAuto
+"    autocmd!
+"    " Si el menú ya está abierto, el espacio solo pone un espacio.
+"    " Si está cerrado, pone el espacio e intenta abrir el menú.
+"    autocmd FileType sql inoremap <buffer> <expr> <Space> pumvisible() ? "\<Space>" : "\<Space>\<C-x>\<C-o>"
+"    " Lo mismo para el punto
+"    autocmd FileType sql inoremap <buffer> <expr> . pumvisible() ? "." : ".\<C-x>\<C-o>"
+"augroup END
+
+"augroup SQLAuto
+"    autocmd!
+"    autocmd FileType sql inoremap <buffer> <Space> <Space><C-x><C-o>
+"    autocmd FileType sql inoremap <buffer> . .<C-x><C-o>
+"augroup END
+
+" inoremap <Space> <Space><C-x><C-o>
+" set completeopt=menuone,noinsert,noselect
+"inoremap <buffer> <Space> <Space><C-x><C-o>
+"inoremap <buffer> . .<C-x><C-o>
+
+"augroup AutocompletadoSimple
+"    autocmd!
+"    autocmd InsertCharPre *.sql if v:char =~ '\v[\.a-zA-Z ]' | ignore | call feedkeys("\<C-x>\<C-o>", "n") | endif
+"augroup END
+
+" set completeopt=menuone,noinsert,noselect
+" 
+" let g:asyncomplete_auto_popup = 1
+" 
+" augroup DadbodAuto
+"     autocmd!
+"     autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+"     autocmd FileType sql call asyncomplete#register_source({
+"         \ 'name': 'dadbod',
+"         \ 'allowlist': ['sql'],
+"         \ 'completor': function('asyncomplete#sources#omni#completor'),
+"         \ 'config': { 'omnifunc': 'vim_dadbod_completion#omni' },
+"         \ 'triggers': {'*': ['.', ' ', '(', "\t", 's', 'S', 'f', 'F']},
+"         \ })
+" augroup END
+
+
+" Built in omnifunc configuration for sql file types
+" autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+
+" --- Configuración de asyncomplete + Dadbod ---
+
+" function! s:setup_sql_completion()
+"     " Registramos la fuente de Dadbod solo cuando entramos a un archivo SQL
+"     call asyncomplete#register_source(asyncomplete#sources#vim_dadbod_completion#get_source_options({
+"         \ 'name': 'vim-dadbod-completion',
+"         \ 'allowlist': ['sql', 'mysql', 'plsql'],
+"         \ 'completor': function('asyncomplete#sources#vim_dadbod_completion#completor'),
+"         \ }))
+" endfunction
+
+" Configuración de asyncomplete para usar Dadbod
+" function! s:setup_sql_completion()
+"     call asyncomplete#register_source({
+"         \ 'name': 'vim-dadbod-completion',
+"         \ 'allowlist': ['sql', 'mysql', 'plsql'],
+"         \ 'completor': function('asyncomplete#sources#omni#completor'),
+"         \ 'config': {
+"         \   'omnifunc': 'vim_dadbod_completion#omni',
+"         \  },
+"         \ })
+" endfunction
+
+" function! s:setup_sql_completion()
+"     call asyncomplete#register_source({
+"         \ 'name': 'vim-dadbod-completion',
+"         \ 'allowlist': ['sql', 'mysql', 'plsql'],
+"         \ 'completor': function('asyncomplete#sources#omni#completor'),
+"         \ 'config': {
+"         \   'omnifunc': 'vim_dadbod_completion#omni',
+"         \  },
+"         \ 'triggers': {'*': ['.', ' ', '(', '	']}, 
+"         \ })
+" endfunction
+
+" function! s:setup_sql_completion()
+"     call asyncomplete#register_source({
+"         \ 'name': 'vim-dadbod-completion',
+"         \ 'allowlist': ['sql', 'mysql', 'plsql'],
+"         \ 'completor': function('asyncomplete#sources#omni#completor'),
+"         \ 'priority': 10,
+"         \ 'config': {
+"         \   'omnifunc': 'vim_dadbod_completion#omni',
+"         \  },
+"         \ 'triggers': {'*': ['.', ' ', '(', "\t", 's', 'S', 'f', 'F']},
+"         \ })
+" endfunction
+
+" 2. Definir la fuente con un disparador de 'espacio' y 'letras'
+" function! s:setup_sql_completion()
+"     call asyncomplete#register_source({
+"         \ 'name': 'vim-dadbod-completion',
+"         \ 'allowlist': ['sql', 'mysql', 'plsql'],
+"         \ 'completor': function('asyncomplete#sources#omni#completor'),
+"         \ 'config': {
+"         \   'omnifunc': 'vim_dadbod_completion#omni',
+"         \  },
+"         \ 'triggers': {'*': ['.', ' ', '(', "\t", 's', 'S', 'f', 'F', 'w', 'W']},
+"         \ })
+" endfunction
+
+
+"Esto ya está
+"set completeopt=menuone,noinsert,noselect
+" Evita que asyncomplete espere demasiado (valor en milisegundos)
+" let g:asyncomplete_auto_popup = 1
+" let g:asyncomplete_auto_completeopt = 1
+" let g:asyncomplete_delay = 100
+
+" Ejecutar la función solo para tipos de archivo SQL
+" autocmd FileType sql,mysql,plsql call s:setup_sql_completion()
+
+" Que el menú aparezca con solo 1 carácter
+" let g:asyncomplete_min_chars = 1
+
+" Configuración opcional para mejorar la experiencia:
+" 1. Cerrar la ventana de previsualización automáticamente al terminar
+" autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" 2. Navegar por el menú con Tab (opcional)
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+
+" --- Configuración Blindada para Asyncomplete + Dadbod ---
+
+" function! s:setup_sql_completion()
+"     " Verificamos si asyncomplete se cargó antes de registrar
+"     if exists('g:asyncomplete_loaded') || exists('*asyncomplete#register_source')
+"         call asyncomplete#register_source({
+"             \ 'name': 'dadbod',
+"             \ 'allowlist': ['sql'],
+"             \ 'completor': function('asyncomplete#sources#omni#completor'),
+"             \ 'config': { 'omnifunc': 'vim_dadbod_completion#omni' },
+"             \ 'triggers': {'*': ['.', ' ', '(', "\t"]},
+"             \ })
+"     endif
+" endfunction
+
+" function! s:setup_sql_completion() abort
+"     call asyncomplete#register_source({
+"         \ 'name': 'dadbod',
+"         \ 'allowlist': ['sql'],
+"         \ 'completor': function('asyncomplete#sources#omni#completor'),
+"         \ 'priority': 10,
+"         \ 'config': { 'omnifunc': 'vim_dadbod_completion#omni' },
+"         \ 'triggers': {'*': ['.', ' ', '(', "\t", 'a', 'e', 'i', 'o', 'u']},
+"         \ })
+" endfunction
+" 
+" " Configuración simplificada y global
+" let g:asyncomplete_auto_popup = 1
+" 
+" augroup DadbodAsyncomplete
+"     autocmd!
+"     autocmd FileType sql call asyncomplete#register_source({
+"         \ 'name': 'dadbod',
+"         \ 'allowlist': ['sql'],
+"         \ 'completor': function('asyncomplete#sources#omni#completor'),
+"         \ 'config': { 'omnifunc': 'vim_dadbod_completion#omni' },
+"         \ 'triggers': {'*': ['.', ' ', '(', "\t"]},
+"         \ })
+" augroup END
+
+" let g:asyncomplete_auto_popup = 1
+" augroup DadbodAsyncomplete
+"     autocmd!
+"     autocmd FileType sql call asyncomplete#register_source({
+"         \ 'name': 'dadbod',
+"         \ 'allowlist': ['sql'],
+"         \ 'completor': {opt, ctx -> asyncomplete#complete(opt['name'], ctx, asyncomplete#sources#omni#get_matches(opt, ctx))},
+"         \ 'config': { 'omnifunc': 'vim_dadbod_completion#omni' },
+"         \ 'triggers': {'*': ['.', ' ', '(', "\t"]},
+"         \ })
+" augroup END
+
+" " 1. Configuraciones globales del motor
+" let g:asyncomplete_auto_popup = 1
+" set completeopt=menuone,noinsert,noselect
+" 
+" " 2. Registro limpio de la fuente para SQL
+" augroup DadbodAsyncomplete
+"     autocmd!
+"     autocmd FileType sql,mysql,plsql setlocal omnifunc=vim_dadbod_completion#omni
+"     autocmd FileType sql,mysql,plsql call asyncomplete#register_source({
+"         \ 'name': 'dadbod',
+"         \ 'allowlist': ['sql'],
+"         \ 'completor': {opt, ctx -> asyncomplete#complete(opt['name'], ctx, asyncomplete#sources#omni#get_matches(opt, ctx))},
+"         \ 'config': { 'omnifunc': 'vim_dadbod_completion#omni' },
+"         \ 'triggers': {'*': ['.', ' ', '(', "\t"]},
+"         \ })
+" augroup END
+" 
+" 
+" inoremap <F6> <C-r>=asyncomplete#complete('dadbod', asyncomplete#context(), 1)<CR>
+" 
+" autocmd FileType sql,mysql,plsql call s:setup_sql_completion()
+" 
+" set completeopt=menuone,noinsert,noselect
+" 
+" let g:asyncomplete_enable_for_all = 1
+" let g:asyncomplete_auto_popup = 1
+" 
+" " 1. Forzar que el menú aparezca siempre (Configuración Global)
+" set completeopt=menuone,noinsert,noselect
+" let g:asyncomplete_auto_popup = 1
+" let g:asyncomplete_auto_completeopt = 1
+" let g:asyncomplete_popup_delay = 100  " Reducir retraso a 100ms
+" 
+" 
+" set updatetime=300
+
+" " Limpiamos cualquier configuración previa de SQL para evitar el error E117
+" autocmd! FileType sql
+" 
+" " Configuraciones globales
+" let g:asyncomplete_auto_popup = 1
+" set completeopt=menuone,noinsert,noselect
+" 
+" " Registro directo (sin funciones externas)
+" augroup DadbodAsyncomplete
+"     autocmd!
+"     autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+"     autocmd FileType sql call asyncomplete#register_source({
+"         \ 'name': 'dadbod',
+"         \ 'allowlist': ['sql'],
+"         \ 'completor': function('asyncomplete#sources#omni#completor'),
+"         \ 'config': { 'omnifunc': 'vim_dadbod_completion#omni' },
+"         \ 'triggers': {'*': ['.', ' ', '(', "\t"]},
+"         \ })
+" augroup EN
+
+
+" --------
+
+
+
+
 "set background=dark
 set background=light
 
