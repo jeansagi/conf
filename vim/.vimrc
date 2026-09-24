@@ -327,6 +327,14 @@ call plug#begin()
 	Plug 'godlygeek/tabular'				" Alineación con base a patrón
 	Plug 'mg979/vim-visual-multi'			" Múltiples cursores como en Sublime/Code
 
+	" Vim Database Access and UI nicities
+	Plug 'tpope/vim-dadbod'
+	Plug 'kristijanhusak/vim-dadbod-ui'
+	Plug 'kristijanhusak/vim-dadbod-completion'
+	Plug 'prabirshrestha/asyncomplete.vim'
+	Plug 'prabirshrestha/asyncomplete-omni.vim'
+	Plug 'prabirshrestha/asyncomplete-buffer.vim'
+	
 	" Otros
 	Plug 'sts10/vim-closed-captioning'		" Manipulación de .srt's
 
