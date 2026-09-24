@@ -300,7 +300,7 @@ endif
 
 
 
-
+set nocompatible
 
 " Plugins
 call plug#begin()
