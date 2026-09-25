@@ -813,6 +813,25 @@ set spelllang+=es
 set autoread
 
 
+" To test Vim keys hen pressed
+function! TestKey()
+  echom "Presiona una tecla..."
+  let c = getchar()
+  " c puede ser número o string, convertimos a string siempre
+  echom "Código (string): " . string(c)
+  " Si es numérico, intentamos mostrar su carácter
+  if type(c) == v:t_number
+    try
+      echom "Texto interpretado: " . nr2char(c)
+    catch
+      echom "Texto interpretado: <no imprimible>"
+    endtry
+  endif
+endfunction
+
+command! TestKey call TestKey()
+
+
 "
 " Revisar si esto vale la pena agregarlo el día de mañana... Tal vez matchit? 
 "
