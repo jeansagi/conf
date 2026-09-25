@@ -363,14 +363,22 @@ set completeopt=menuone,noinsert,noselect,preview
 " Autocomplete enabled for sql files
 autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
 
-augroup asyncomplete_sql
-  autocmd!
-  autocmd FileType sql call asyncomplete#register_source({
-        \ 'name': 'omni',
-        \ 'allowlist': ['sql'],
-        \ 'completor': function('asyncomplete#sources#omni#completor')
-        \ })
-augroup END
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite *** augroup asyncomplete_sql
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***   autocmd!
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite *** 
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***   " 1. Definir la función omni para dadbod solo en SQL
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***   autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite *** 
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***   " 2. Registrar la fuente asyncomplete para SQL
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***   autocmd FileType sql call asyncomplete#register_source({
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***         \ 'name': 'omni',
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***         \ 'allowlist': ['sql'],
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***         \ 'completor': function('asyncomplete#sources#omni#completor')
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***         \ })
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite *** 
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***   " 3. Mapeo del punto EXCLUSIVO para archivos SQL (buffer-local)
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite ***   autocmd FileType sql inoremap <buffer> <expr> . pumvisible() ? '.' : '.<C-x><C-o>'
+" *** ACTIVAR ESTA SECCIÓN CUANDO SE USE sqlite *** augroup END
 
 " augroup asyncomplete_buffer
 "   autocmd!
@@ -383,7 +391,10 @@ augroup END
 " augroup END
 
 " Autocompletr <C-x><C-o> when writing .
-inoremap <expr> . pumvisible() ? '.' : '.<C-x><C-o>'
+" NOTA: No se puede poner como sigue ya que en todo tipo de archivos cuando
+"       se pulse . se invocará el autocompletado!
+"
+" inoremap <expr> . pumvisible() ? '.' : '.<C-x><C-o>'
 
 " Tab completion : A la hora de la verdad no me gusta completar con Tab !
 "inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
