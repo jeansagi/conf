@@ -831,6 +831,11 @@ endfunction
 
 command! TestKey call TestKey()
 
+set ttyfast
+" https://github.com/vim/vim/issues/1735#issuecomment-383353563
+set lazyredraw
+set synmaxcol=500
+
 
 "
 " Revisar si esto vale la pena agregarlo el día de mañana... Tal vez matchit? 
